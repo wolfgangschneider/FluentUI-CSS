@@ -1,0 +1,64 @@
+﻿@page "/"
+
+
+<PageTitle>Home</PageTitle>
+<h1>Sticker sheet</h1>
+<p>
+
+    <a href="https://web-components.fluentui.dev/?path=/docs/theme-settheme--docs" target="_blank">See on Web Component v3</a>
+</p>
+
+<div style="display:grid;grid-template-columns:250px 250px 250px ;grid-column-gap:var(--spacingHorizontalXXXL)">
+    <div class="column" >
+        <div class="paceholder">
+            fui-personal no native blazor/html component
+        </div>
+        <div class="paceholder">
+            tablist  no native blazor/html component
+        </div>
+        <input type="search" placeholder="Find" />
+        <select >
+            <option value="" disabled hidden selected>Select</option>
+            <option>Action 1</option>
+            <option>Action 2</option>
+            <option>Action 3</option>
+        </select>
+
+    </div>
+    <div style="grid-column:2; display:grid;grid-template-rows: auto auto; grid-template-columns: 1fr 1fr; grid-gap:5px">
+
+        <button style="width:70px; height:20px" class="ButtonAppearance.Primary">Text</button>
+        <div class="paceholder" style="grid-column:2; grid-row:1 ">
+            switch no native blazor/html component
+        </div>
+        <input  type="range" style="grid-column:1 / span 2" />
+        <label>
+            <input type="checkbox" checked/>
+            Option 1
+        </label>
+
+
+        <label>
+            <input type="radio" checked />
+            Option 1
+        </label>
+        <label>
+            <input type="checkbox" />
+            Option 2
+        </label>
+        <label>
+            <input type="radio" />
+            Option 2
+        </label>
+
+    </div>
+    <div class="column" style="grid-column:3; display:flex">
+        <label>
+            Description
+            <span>*</span>
+            <input type="text"  />
+        </label>
+        <a href="https://react.fluentui.dev/?path=/docs/theme-theme-designer--docs" target="_blank">See on Web React v9</a>
+    </div>
+</div>
+

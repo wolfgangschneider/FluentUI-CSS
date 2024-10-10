@@ -1,0 +1,14 @@
+﻿.stack {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    column-gap: 10px;
+    row-gap: 10px;
+    width: 100%;
+}
+.stack--vertical {
+    flex-direction: column;
+}
+.stack--nogap{
+    grid-gap:0;
+}

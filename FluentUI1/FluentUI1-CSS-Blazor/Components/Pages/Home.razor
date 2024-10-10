@@ -1,0 +1,117 @@
+﻿@page "/"
+@rendermode InteractiveServer
+<PageTitle>Home</PageTitle>
+
+
+
+
+<div style="display:grid;grid-column-gap:10px; width:fit-content">
+  @*   <FluentStack Style="grid-column:1" Orientation="Orientation.Vertical" >
+        <h1>Hello, world!</h1>
+       
+        <FluentButton disabled="@_elementsDisabled" Appearance="Appearance.Accent "  @onclick="IncrementCount">Click me </FluentButton>
+      
+        <FluentCheckbox @bind-Value="@value1" Appearance="Appearance.Stealth " Label="Apples" disabled="@_elementsDisabled" />
+
+        <FluentNumberField Appearance="FluentInputAppearance.Filled" @bind-Value="@number" disabled="@_elementsDisabled" Label="Number" />
+        <FluentTextField @bind-Value="@text" disabled="@_elementsDisabled" Label="Text"/>
+
+        <FluentRadioGroup @bind-Value="radio" Label="Radio" Disabled="@_elementsDisabled">
+            <FluentRadio Value="0" Label="Value 0"/>
+            <FluentRadio Value="1" Label="Value 1" />
+        </FluentRadioGroup>
+        
+        <FluentSelect @bind-Value="@select" TOption="string" Disabled="@_elementsDisabled">
+            <FluentOption Value="1" >This option is disabled</FluentOption>
+            <FluentOption Value="2">This option is not disabled</FluentOption>
+            <FluentOption Value="3">This option is not disabled</FluentOption>
+            <FluentOption Value="4" Disabled="true">This option is disabled</FluentOption>
+            <FluentOption Value="5">This option is not disabled</FluentOption>
+            <FluentOption Value="6">This option is not disabled</FluentOption>
+        </FluentSelect>
+      @*   <FluentInputFile /> *@
+    @*</FluentStack>
+     *@
+    
+    
+    <div class="stack stack--vertical" Style="grid-column:1" >
+            <h1>Hello, world!</h1>
+            <button disabled="@_elementsDisabled" @onclick="IncrementCount">Click me</button>
+
+
+
+
+            <label>
+
+                <InputCheckbox id="cb2" @bind-Value="@value1" disabled="@_elementsDisabled">sssss</InputCheckbox>
+                Apples
+            </label>
+
+
+            @* <InputDate @bind-Value="@date" /> *@
+
+            <label>
+                Number
+                <InputNumber @bind-Value="@number" disabled="@_elementsDisabled" />
+            </label>
+
+            <label>
+                Text
+                <InputText  @bind-Value="@text" disabled="@_elementsDisabled" />
+            </label>
+            <label style="margin:0 10px 4px 0">   Radio  </label>
+            <InputRadioGroup Name="1111" @bind-Value="@radio" disabled="@_elementsDisabled">
+                <div>
+                    <label>
+                        <InputRadio Value="0" disabled="@_elementsDisabled" />
+                        Value 0
+                    </label>
+                    <label>
+                        <InputRadio Value="1" disabled="@_elementsDisabled" />
+                        Value 1
+                    </label>
+                </div>
+
+            </InputRadioGroup>
+
+
+            <InputSelect @bind-Value="@select" disabled="@_elementsDisabled">
+                <option Value="1" disabled>This option is disabled</option>
+                <option Value="2">This option is A</option>
+                <option Value="3">This option is B</option>
+                <option Value="4">This option is C</option>
+                <option Value="5">This option is D</option>
+            </InputSelect>
+
+            @*  <InputDate /> *@
+            @*         <InputFile /> *@
+            @*   <InputTextArea /> *@
+
+            <div>
+                hallo
+                <p>Paragraph</p>
+            </div>
+
+        </div>
+
+  
+
+</div>
+
+@code {
+  
+    [CascadingParameter]
+    bool _elementsDisabled {get; set; }
+    private int currentCount = 0;
+    bool value1 = true;
+    DateTime? date = DateTime.Now;
+    int number;
+    int radio;
+    string text = "hallo world";
+    string select;
+    private void IncrementCount()
+    {
+        currentCount++;
+       
+    }
+}

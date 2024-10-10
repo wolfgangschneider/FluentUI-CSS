@@ -1,0 +1,26 @@
+﻿a {
+    color: var(--colorBrandForegroundLink);
+    text-decoration: none;
+    font-weight: var(--fontWeightRegular);
+    font-size: var(--fontSizeBase300);
+    &:hover
+
+{
+    color: var(--colorBrandForegroundLinkHover);
+    text-decoration-thickness: var(--strokeWidthThin);
+    text-decoration: underline;
+}
+
+&:hover:active {
+    color: var(--colorBrandForegroundLinkPressed);
+}
+
+&:focus-visible {
+    outline-style: none;
+}
+
+&:disabled,
+&:disabled:hover {
+    color: var(--colorNeutralForegroundDisabled);
+}
+}

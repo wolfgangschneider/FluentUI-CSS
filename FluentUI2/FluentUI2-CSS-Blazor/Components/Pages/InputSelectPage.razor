@@ -1,0 +1,19 @@
+﻿@page "/inputselect"
+<h1>InputSelect</h1>
+@* <a href="https://web-components.fluentui.dev/?path=/docs/components-radio--docs" target="_blank">link text</a> *@
+<div class="fluent-badge">
+    <label>
+        Theme
+        <InputSelect TValue="Themes" @bind-value="@_selectedTheme">
+            @foreach (var color in Enum.GetValues(typeof(Themes)))
+            {
+                <option value="@color">@color</option>
+            }
+        </InputSelect>
+    </label>
+</div>
+
+@code {
+    enum Themes { WebLight, WebDark, TeamsLight, TeamsDark }
+    Themes _selectedTheme = Themes.WebLight;
+}

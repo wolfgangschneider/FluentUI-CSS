@@ -1,0 +1,16 @@
+﻿@page "/inputradio"
+<h1>InputRadio</h1>
+<a href="https://web-components.fluentui.dev/?path=/docs/components-radio--docs" target="_blank">link text</a>
+<div class="fluent-badge">
+    <label>
+        <InputRadioGroup @bind-Value="@number">
+            <InputRadio Value="1"  />
+            <InputRadio Value="2" />    
+        </InputRadioGroup>
+        
+    </label>
+</div>
+
+@code {
+   int number=1;
+}

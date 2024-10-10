@@ -1,0 +1,63 @@
+﻿label {
+    color: var(--colorNeutralForeground1);
+    cursor: pointer;
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+    user-select: none;
+}
+
+    label.size-small,
+    label.LabelSize\.Small {
+        font-size: var(--fontSizeBase200);
+        line-height: var(--lineHeightBase200);
+    }
+    label.size-medium,
+    label.LabelSize\.Medium {
+    }
+    label.size-large,
+    label.LabelSize\.Large {
+        font-size: var(--fontSizeBase400);
+        line-height: var(--lineHeightBase400);
+        font-weight: var(--fontWeightSemibold);
+    }
+
+    label.weight-regular,
+    label.LabelWeight\.Regular{
+
+    }
+    label.weight-semibold,
+    label.LabelWeight\.Semibold {
+        font-weight: var(--fontWeightSemibold);
+    }
+
+
+    label:has(input[type="number"]),
+    label:has(input[type="text"]),
+    label:has(input:not([type])) {
+        max-width: 400px;
+        display: block;
+        /*display:inline-grid;*/
+        cursor: default;
+    }
+
+    label:has(input[type="date"]) {
+        cursor: default;
+       /* display: inline-grid;*/
+    }
+
+    label:has(input[type="radio"]),
+    label:has(input[type="checkbox"]) {
+        display: flex;
+        align-items: center;
+    }
+    /*label:has(select) {
+        display: inline-grid;
+        align-items:center;
+        column-gap:8px;
+    }*/
+
+   
+   
+

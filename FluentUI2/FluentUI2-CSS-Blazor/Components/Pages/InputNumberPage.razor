@@ -1,0 +1,73 @@
+﻿@page "/inputnumber"
+<h1>Input Number</h1>
+
+<div class="fluent-badge">
+    <label>
+        Input Label
+        <InputNumber  @bind-Value="@number"/>
+   
+    </label>
+</div>
+<h2>STORIES</h2>
+
+<h3>Default</h3>
+<div class="fluent-badge">
+    <label>
+        Input Label
+        <InputNumber @bind-Value="@number" />
+    </label>
+</div>
+
+<h3>Without Label</h3>
+<div class="fluent-badge">
+    <InputNumber style=" max-width: 400px;" @bind-Value="@number" />
+</div>
+
+<h3>Disabled</h3>
+<div class="fluent-badge">
+    <label>
+        Disabled Input
+        <InputNumber disabled @bind-Value="@number" />
+    </label>
+</div>
+<h3>Placeholder</h3>
+<div class="fluent-badge">
+    <label>
+        Input with a placeholder
+        <InputNumber @bind-Value="@numberPlaceholder" placeholder="Placeholder text" />
+    </label>
+</div>
+<h3>Read Only</h3>
+<div class="fluent-badge">
+    <label>
+        Read-only value
+       
+        <InputNumber readonly @bind-Value="@number" />
+    </label>
+</div>
+<h3>Invalied</h3>
+<div class="fluent-badge">
+    <label>
+ 
+        <InputNumber class="invalid" @bind-Value="@number2" />
+    </label>
+    
+</div>
+
+<h3>Inline (Blazor like)</h3>
+<div class="fluent-badge">
+ 
+        The quick brown
+    <InputNumber style="display:inline-flex" @bind-Value="@numberInline1" placeholder="noun" />
+        jumped over the
+    <InputNumber style="display:inline-flex" @bind-Value="@numberInline1" placeholder="adjective" />
+        dog.
+</div>
+@code {
+    int number;
+    int number2;
+    int numberInline1;
+    int numberInline2;
+    int? numberPlaceholder = null;
+
+}

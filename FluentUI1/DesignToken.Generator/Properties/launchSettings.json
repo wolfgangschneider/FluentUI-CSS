@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Microsoft.FluentUI.AspNetCore.Components.Generators": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "..\\..\\Core\\Microsoft.FluentUI.AspNetCore.Components.csproj"
+    }
+  }
+}
