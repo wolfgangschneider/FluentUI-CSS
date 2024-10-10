@@ -1,6 +1,3 @@
 ﻿
 
-input[type="text"]:not([style*="display:inline-flex"]),
-input:not([type]):not([style*="display:inline-flex"]) {
-    width: 100%;
-}
+

@@ -11,7 +11,7 @@
     gap: var(--spacingHorizontalXXS);
     padding: 0 var(--spacingHorizontalMNudge);
     position: relative;
-    width: 100%;
+ 
     font-family: var(--fontFamilyBase);
     font-size: var(--fontSizeBase300);
     font-weight: var(--fontWeightRegular);

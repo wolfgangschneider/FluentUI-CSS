@@ -1,8 +1,94 @@
 ﻿@page "/label"
-<h3>Label</h3>
+<h1>Label</h1>
 
 <div class="fluent-badge">
     <label>Label</label>
+</div>
+<h3>Disabled</h3>
+<div class="fluent-badge">
+    <label>
+        Label
+    <input disabled/>    
+    </label>
+</div>
+<h2>Position</h2>
+<h3>Default</h3>
+
+<p>The value will be used to create a label HTML element for the input component. It is usually displayed just above the input field. For a checkbox it is displayed after the input field
+    <a href="https://www.fluentui-blazor.net/Forms">Blazor Fluent UI</a>
+</p>
+<div class="fluent-badge" style="display:flex;flex-direction:column;    row-gap: var(--spacingVerticalS);">
+    <label>
+        Text
+        <input type="text" />
+    </label>
+    <label>
+        TextArear
+        <textarea/>
+    </label>
+    <label>
+        Select
+        <select>
+            <option value="" disabled hidden selected>Select</option>
+            <option>Action 1</option>
+            <option>Action 2</option>
+            <option>Action 3</option>
+        </select>
+    </label>
+    <label>
+        Number
+        <input type="number" />     
+    </label>
+    <label>
+        <input type="checkbox" />
+        Checkbox
+    </label>
+    <label>
+        <input type="radio" />
+        Radio
+    </label>
+   
+   
+
+    <label> </label>
+</div>
+<h3>Left</h3>
+<div class="fluent-badge" style="display:flex;flex-direction:column;    row-gap: var(--spacingVerticalS);">
+    <label class="LabelPosition.Left">
+        Text
+        <input type="text" />
+    </label>
+    <label class ="LabelPosition.Left">
+        TextArear
+        <textarea />
+    </label>
+    <label class="LabelPosition.Left">
+        Select
+        <select>
+            <option value="" disabled hidden selected>Select</option>
+            <option>Action 1</option>
+            <option>Action 2</option>
+            <option>Action 3</option>
+        </select>
+    </label>
+    <label class="LabelPosition.Left">
+        Number
+        <input type="number" />
+    </label>
+    <label class="LabelPosition.Left">
+        Checkbox
+        <input type="checkbox" />
+       
+    </label>
+    <label class="LabelPosition.Left">
+        Radio
+        <input type="radio" />
+        
+    </label>
+
+
+
+    <label> </label>
 </div>
 <h1>Size</h1>
 <div class="fluent-badge" style="display: flex;justify-content: space-evenly;">
@@ -15,6 +101,8 @@
     <label class="LabelWeight.Regular">Regular Label</label>
     <label class="LabelWeight.Semibold">Semibold Label</label>
 </div>
+
+
 
 @code {
 

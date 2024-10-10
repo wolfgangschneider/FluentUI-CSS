@@ -1,12 +1,5 @@
 ﻿
-label > input:not([type="checkbox"]):not([type="radio"]) {
-    margin-top: var(--spacingVerticalXS);
-}
 
-label > input[type="checkbox"],
-label > input[type="radio"] {
-    margin-right: var(--spacingVerticalM);
-}
 
 input:not([type="checkbox"]):not([type="radio"]):not([type="range"]) {
     align-items: center;
