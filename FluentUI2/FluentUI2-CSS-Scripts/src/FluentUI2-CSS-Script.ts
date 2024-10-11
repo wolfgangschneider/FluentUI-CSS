@@ -1,7 +1,7 @@
-import { setTheme } from '@fluentui/web-components';
+import { Theme, setTheme } from '@fluentui/web-components';
 import { webLightTheme, webDarkTheme, teamsLightTheme, teamsDarkTheme, BrandVariants, createLightTheme, createDarkTheme, createTeamsDarkTheme } from '@fluentui/tokens';
 
-export function setFluentui2Theme(theme: number) {
+export function setFluentui2Theme(theme: number)  {
     //enum Themes{WebLight,WebDark,TeamsLight,TeamsDark}
     if (theme == 0) {
         setTheme(webLightTheme);
@@ -22,9 +22,10 @@ export function setFluentui2Theme(theme: number) {
         //darkTheme.colorBrandForeground2 = myNewTheme[120];
         setTheme(darkTheme);
     }
+   
 }
 
-export function setFluentui2BrandTheme(light: boolean,brant:any) {
+export function setFluentui2BrandTheme(light: boolean, brant: any): Theme {
     //enum Themes{WebLight,WebDark,TeamsLight,TeamsDark}
     if (light)
         var theme = createLightTheme(brant);
@@ -35,6 +36,7 @@ export function setFluentui2BrandTheme(light: boolean,brant:any) {
         theme.colorBrandForeground2 = brant[120];
     }
     setTheme(theme);
+    return theme;
 }
 
 // https://react.fluentui.dev/?path=/docs/theme-theme-designer--docs

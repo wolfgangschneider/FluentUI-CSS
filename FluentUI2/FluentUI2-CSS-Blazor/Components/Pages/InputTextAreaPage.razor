@@ -1,10 +1,71 @@
-﻿<h1>InputTextArea</h1>
-@page "/InputTextArear"
+﻿@page "/InputTextArear"
+@{string controlName = "InputTextArea";}
+<h1>@controlName</h1>
 
-
+<p>
+    <a href="https://web-components.fluentui.dev/?path=/docs/components-textarea--docs" target="_blank">See on Web Components v3</a>
+</p>
 <div class="fluent-badge">
-   <textarea />
-</div>
-@code {
+    <label>
+       
+        <InputTextArea @bind-Value="@text" />
 
+    </label>
+</div>
+<h2>STORIES</h2>
+
+<h3>Default</h3>
+<div class="fluent-badge">
+    <label>
+        @controlName
+        <InputTextArea @bind-Value="@text" />
+    </label>
+</div>
+
+<h3>Without label</h3>
+<div class="fluent-badge">
+    <InputTextArea  @bind-Value="@text" />
+</div>
+
+<h3>Disabled</h3>
+<div class="fluent-badge">
+    <label>
+        Disabled  @controlName
+        <InputTextArea disabled @bind-Value="@text" />
+    </label>
+</div>
+
+<h3>Placeholder</h3>
+<div class="fluent-badge">
+    <label>
+        @controlName with a placeholder
+        <InputTextArea @bind-Value="@textPlaceholder" placeholder="Placeholder text" />
+    </label>
+</div>
+
+<h3>Read Only</h3>
+<div class="fluent-badge">
+    <label>
+        @controlName Read-only
+        <InputTextArea readonly @bind-Value="@text" />
+    </label>
+</div>
+<h3>Invalied</h3>
+<div class="fluent-badge">
+    <label>
+        Invalied  @controlName Blazor (class .invalid)
+        <InputTextArea class="invalid" @bind-Value="@textInvalid" />
+    </label>
+    <label>
+        Invalied  @controlName CSS :invalid
+        <textarea required />
+    </label>
+</div>
+
+@code {
+    string text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.;";
+    string textInvalid;
+    string textPlaceholder;
+   
 }
+

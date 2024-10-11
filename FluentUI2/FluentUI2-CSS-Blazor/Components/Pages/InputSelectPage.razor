@@ -1,11 +1,30 @@
 ﻿@page "/inputselect"
 <h1>InputSelect</h1>
-@* <a href="https://web-components.fluentui.dev/?path=/docs/components-radio--docs" target="_blank">link text</a> *@
+
+<p>
+    <a href="https://web-components.fluentui.dev/?path=/docs/components-slider--docs" target="_blank">See on Web Components v3</a>
+</p>
+
 <div class="fluent-badge">
     <label>
-        Theme
-        <InputSelect TValue="Themes" @bind-value="@_selectedTheme">
-            @foreach (var color in Enum.GetValues(typeof(Themes)))
+        Input Selcet
+        <InputSelect TValue="Actions" @bind-value="@_selectedAction">
+            @foreach (var color in Enum.GetValues(typeof(Actions)))
+            {
+                <option value="@color">@color</option>
+            }
+        </InputSelect>
+
+    </label>
+</div>
+<h2>STORIES</h2>
+
+<h3>Default</h3>
+<div class="fluent-badge">
+    <label>
+        Input Select
+        <InputSelect TValue="Actions" @bind-value="@_selectedAction">
+            @foreach (var color in Enum.GetValues(typeof(Actions)))
             {
                 <option value="@color">@color</option>
             }
@@ -13,7 +32,48 @@
     </label>
 </div>
 
+<h3>Without Label</h3>
+<div class="fluent-badge">
+    <InputSelect TValue="Actions" @bind-value="@_selectedAction">
+        @foreach (var color in Enum.GetValues(typeof(Actions)))
+        {
+            <option value="@color">@color</option>
+        }
+    </InputSelect>
+</div>
+
+<h3>Disabled</h3>
+<div class="fluent-badge">
+    <label>
+        Disabled Input
+        <InputSelect disabled TValue="Actions" @bind-value="@_selectedAction">
+            @foreach (var color in Enum.GetValues(typeof(Actions)))
+            {
+                <option value="@color">@color</option>
+            }
+        </InputSelect>
+    </label>
+</div>
+
+<h3>Placeholder</h3>
+<div class="fluent-badge">
+    <label>
+        @{
+            Actions? action = null;
+        }
+        Input with a placeholder
+        <InputSelect TValue="Actions?" @bind-value="@action">
+            <option  value="" hidden selected>Select an Action</option>
+            @foreach (var color in Enum.GetValues(typeof(Actions)))
+            {
+                <option value="@color">@color</option>
+            }
+            
+        </InputSelect>
+    </label>
+</div>
+
 @code {
-    enum Themes { WebLight, WebDark, TeamsLight, TeamsDark }
-    Themes _selectedTheme = Themes.WebLight;
+    enum Actions { Action1,Action2,Action3 }
+    Actions _selectedAction = Actions.Action1;
 }

@@ -56,15 +56,18 @@
     }
 
     /* modifi the inputs*/
-    label > input:not([type="checkbox"]):not([type="radio"]),
+    label > input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
     label > select,
     label > textarea {
         margin-top: var(--spacingVerticalXS);
     }
-
+    label > input[type="range"] {
+        margin-top: var(--spacingVerticalS);
+    }
     label > input[type="checkbox"],
     label > input[type="radio"] {
         margin-right: var(--spacingVerticalM);
+        margin-left: 0;
     }
 
     /*Left*/

@@ -1757,6 +1757,7 @@ function setFluentui2BrandTheme(light, brant) {
     theme.colorBrandForeground2 = brant[120];
   }
   setTheme(theme);
+  return theme;
 }
 var myNewTheme = {
   10: "#070200",

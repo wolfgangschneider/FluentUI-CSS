@@ -7,6 +7,11 @@ export function SetTheme(t)
     setFluentui2Theme(t);
 }
 
+export function setBrandTheme(light, theme)
+{
+    let b = setFluentui2BrandTheme(light, theme);
+    return b;
+}
 export function SetBrandTheme(light) {
     let easybyte = {
         10: "#080100",

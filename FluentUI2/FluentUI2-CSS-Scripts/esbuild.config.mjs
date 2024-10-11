@@ -29,6 +29,31 @@ await esbuild.build({
     /*treeShaking: true, does not work*/
 });
 
+await esbuild.build({
+    entryPoints: ['./src/getBrandTokensFromPalette.ts'],
+    bundle: true,
+    minify: false,
+    sourcemap: true,
+    logLevel: 'info',
+    target: 'es2022',
+    format: 'esm',
+    outfile: './dist/getBrandTokensFromPalette.module.js',
+    legalComments: 'none',
+    /*treeShaking: true, does not work*/
+});
+
+await esbuild.build({
+    entryPoints: [ './src/colors/hueMap.ts'],
+    bundle: true,
+    minify: false,
+    sourcemap: true,
+    logLevel: 'info',
+    target: 'es2022',
+    format: 'esm',
+    outfile: './dist/hueMap.module.js',
+    legalComments: 'none',
+    /*treeShaking: true, does not work*/
+});
 
 // CSS: Microsoft.FluentUI.AspNetCore.Components.bundle.scp.css
 //const allStyleFile = 'all-styles.css';

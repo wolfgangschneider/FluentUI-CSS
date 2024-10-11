@@ -1,16 +1,59 @@
 ﻿@page "/inputcheckbox"
-<h1>InputCheckbox</h1>
+@{
+    string controlName = "InputCheckbox";
+}
+<h1>@controlName</h1>
 
-<a href="https://web-components.fluentui.dev/?path=/docs/components-checkbox--docs" target="_blank" >link text</a>
+<p>
+    <a href="https://web-components.fluentui.dev/?path=/docs/components-checkbox--docs" target="_blank">See on Web Components v3</a>
+</p>
+<div class="fluent-badge">
+    <label>
+
+        <InputCheckbox @bind-Value="@value" />
+
+    </label>
+</div>
+<h2>STORIES</h2>
 
 <h3>Default</h3>
 <div class="fluent-badge">
-  
-     
-        <InputCheckbox @bind-Value="@bool1" />
-  
+    <label>
+        @controlName
+        <InputCheckbox @bind-Value="@value" />
+    </label>
+</div>
+
+<h3>Without label</h3>
+<div class="fluent-badge">
+    <InputCheckbox  @bind-Value="@value" />
+</div>
+
+<h3>Disabled</h3>
+<div class="fluent-badge">
+    <label>
+        Disabled  @controlName
+        <InputCheckbox disabled @bind-Value="@value" />
+    </label>
+</div>
+
+
+
+<h3>Invalied</h3>
+<div class="fluent-badge">
+    <label>
+        Invalied  @controlName Blazor (class .invalid)
+        <InputCheckbox class="invalid" @bind-Value="@value" />
+    </label>
+    <label>
+        Invalied  @controlName CSS :invalid
+        <input type="checkbox" required />
+    </label>
 </div>
 
 @code {
-    bool bool1 = true;
+    bool value;
+   
+
 }
+

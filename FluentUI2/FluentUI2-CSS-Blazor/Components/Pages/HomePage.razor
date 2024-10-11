@@ -1,14 +1,50 @@
 ﻿@page "/"
-
+@using System.Text
+@inject IJSRuntime JSRuntime
 
 <PageTitle>Home</PageTitle>
-<h1>Sticker sheet</h1>
-<p>
 
-    <a href="https://web-components.fluentui.dev/?path=/docs/theme-settheme--docs" target="_blank">See on Web Component v3</a>
-</p>
+<div style="height:100%; display:flex ;   grid-column-gap: var(--spacingHorizontalXXXL); ">
+    <fieldset style="border:0;background-color: var(--colorNeutralBackground3);  min-width:300px ; display:grid; grid-template-rows: auto 1fr;grid-row-gap:10px" disabled="@(!RendererInfo.IsInteractive)">
+        <div class="column"  style="display:flex; flex-direction:column">
+       
+            @if(!RendererInfo.IsInteractive)
+            {
+                <p>Switch to interactive to use theme designer</p>
+            }
+        <label>
+            Key color Value
+            <input type="color" @bind="@Color" />
+        </label>
+         <InputText @bind-Value="@Color"  />
+           
+        <div style="display:flex;grid-column-gap: var(--spacingHorizontalXXXL);">
+            <label >
+                Hue Torsion
+                <input  type="range" @bind-value="@HueTorsion" min="-50" max="50" />
+            </label>
+            <InputNumber  style="width:4em" @bind-Value="@HueTorsion" min="-50" max="50" />
+           
+        </div>
+        <div style="display:flex;grid-column-gap: var(--spacingHorizontalXXXL);">
+            <label>
+                Vibrancy 
+                <input type="range" @bind-value="@Vibrancy" min="-50" max="50" />
+            </label>
+            <InputNumber style="width:4em" @bind-Value="@Vibrancy" min="-100" max="50" />
 
-<div style="display:grid;grid-template-columns:250px 250px 250px ;grid-column-gap:var(--spacingHorizontalXXXL)">
+        </div>
+      @*   <button @onclick="ExportCSSProperties" class="ButtonAppearance.Primary">Export</button> *@
+    </div>
+        <InputTextArea readonly style="height:100%;    font-size: x-small; " @bind-Value="@cssString" />
+    </fieldset>
+      
+<div style="display:grid;grid-template-columns:250px 250px 250px;grid-template-rows:auto auto 1fr;grid-column-gap:var(--spacingHorizontalXXXL)">
+        <h1>Sticker sheet</h1>
+        <p>
+
+            <a href="https://web-components.fluentui.dev/?path=/docs/theme-settheme--docs" target="_blank">See on Web Component v3</a>
+        </p>
     <div class="column" >
         <div class="paceholder">
             fui-personal no native blazor/html component
@@ -31,7 +67,7 @@
         <div class="paceholder" style="grid-column:2; grid-row:1 ">
             switch no native blazor/html component
         </div>
-        <input  type="range" style="grid-column:1 / span 2" />
+        <input  type="range"  style="grid-column:1 / span 2" />
         <label>
             <input type="checkbox" checked/>
             Option 1
@@ -54,11 +90,81 @@
     </div>
     <div class="column" style="grid-column:3; display:flex">
         <label>
-            Description
-            <span>*</span>
+            Description *
+           
             <input type="text"  />
         </label>
         <a href="https://react.fluentui.dev/?path=/docs/theme-theme-designer--docs" target="_blank">See on Web React v9</a>
     </div>
 </div>
+</div>
 
+@code{
+
+    private IJSObjectReference? module;
+
+    int hueTorsion = 0;
+    int HueTorsion
+    {
+        get { return hueTorsion; }
+        set { hueTorsion = value; calcTheme(); }
+    }
+
+    int vibrancy = 0;
+    int Vibrancy
+    {
+        get { return vibrancy; }
+        set { vibrancy = value; calcTheme(); }
+    }
+    string _color = "#0F6CBD";
+    string Color
+    {
+        get { return _color; }
+        set { 
+            _color = value; 
+            calcTheme(); 
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+      
+        if (String.IsNullOrWhiteSpace(cssString) && RendererInfo.Name != "Static")
+            ExportCSSProperties();
+     
+    }
+
+    async void calcTheme()
+    {
+        cssString = "";
+        if(module == null)
+            module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Js/createBrand.js");
+
+       // var theme = await module.InvokeAsync<object>("createBrand", Color, HueTorsion/100, Vibrancy/100);
+  
+            ExportCSSProperties()
+    ;
+    }
+    string cssString = "";
+
+    public async void ExportCSSProperties()
+    {
+        cssString = "";
+        StringBuilder stringBuilder = new StringBuilder();
+        if (module == null)
+            module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Js/createBrand.js");
+
+        var theme = await module.InvokeAsync<object>("createBrand", Color, hueTorsion/100f, vibrancy/100f);
+        var result = Newtonsoft.Json.Linq.JObject.Parse(theme.ToString());
+
+        stringBuilder.Append("html{\n");
+        foreach (Newtonsoft.Json.Linq.JProperty property in result.Properties())
+        {
+
+            stringBuilder.Append($"    --{property.Name}: {property.Value};\n");
+        }
+        stringBuilder.Append("}");
+        cssString = stringBuilder.ToString();
+        StateHasChanged();
+    }
+}

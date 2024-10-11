@@ -11,54 +11,49 @@
     gap: var(--spacingHorizontalXXS);
     padding: 0 var(--spacingHorizontalMNudge);
     position: relative;
- 
+
     font-family: var(--fontFamilyBase);
     font-size: var(--fontSizeBase300);
     font-weight: var(--fontWeightRegular);
     line-height: var(--lineHeightBase300);
-    &:hover
+    cursor: pointer;
 
-{
-}
+    &:hover {}
 
-&:hover:active {
-}
+    &:hover:active {}
 
-:active {
-}
+    :active {}
 
-&:focus {
-}
+    &:focus {}
 
-&:focus-visible {
-}
+    &:focus-visible {}
 
-&:focus-within {
-    outline: 0;
-    border-bottom: 0;
-    border-bottom: 2px solid var(--colorCompoundBrandStroke);
-}
+    &:focus-within {
+        outline: 0;
+        border-bottom: 0;
+        border-bottom: 2px solid var(--colorCompoundBrandStroke);
+    }
 
-&:disabled,
-&:disabled:hover {
-    background: var(--colorTransparentBackground);
-    border: var(--strokeWidthThin) solid var(--colorNeutralStrokeDisabled);
-}
+    &:disabled,
+    &:disabled:hover {
+        background: var(--colorTransparentBackground);
+        border: var(--strokeWidthThin) solid var(--colorNeutralStrokeDisabled);
+    }
 
-&:read-only {
-    color: var(--colorNeutralForeground1);
-}
+    &:read-only {
+        color: var(--colorNeutralForeground1);
+    }
 
-&.invalid {
-    /*org web-component border-color: var(--colorPaletteRedBorder2);*/
-    /*more compatible with blazor default .mportant style*/
-    border: none;
-    outline: 1px solid var(--colorPaletteRedBorder2);
-}
+    &.invalid {
+        /*org web-component border-color: var(--colorPaletteRedBorder2);*/
+        /*more compatible with blazor default .mportant style*/
+        border: none;
+        outline: 1px solid var(--colorPaletteRedBorder2);
+    }
 
 }
 
- /*   select:disabled {
+/*   select:disabled {
         cursor: not-allowed;
         opacity: var(--disabled-opacity);
     }
