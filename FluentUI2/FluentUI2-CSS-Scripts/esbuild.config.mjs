@@ -24,7 +24,7 @@ await esbuild.build({
     logLevel: 'info',
     target: 'es2022',
     format: 'esm',
-    outfile: './dist/Easybyte.FluentUI2.CSS.lib.module.js',
+    outfile: './dist/easybyte.fluentui2.css.lib.module.js',
     legalComments: 'none',
     /*treeShaking: true, does not work*/
 });

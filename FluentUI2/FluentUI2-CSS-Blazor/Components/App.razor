@@ -1,4 +1,4 @@
-﻿@inject NavigationManager nm;
+﻿
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +9,7 @@
   
     <link rel="stylesheet" href="@Assets["app.css"]" />
     <link rel="stylesheet" href="@Assets["FluentUI2-CSS-Blazor.styles.css"]" />
-    <link rel="stylesheet" href="@Assets["css/FluentUI2.css"]" />
+    <link rel="stylesheet" href="@Assets["_content/FluentUI2-CSS-RazorClassLibrary/css/fluentui2/fluentui2.css"]" />
     <ImportMap />
     <link rel="icon" type="image/png" href="favicon.png" />
     <HeadOutlet @rendermode="PageRenderMode" />
@@ -19,8 +19,10 @@
     
     <Routes @rendermode="PageRenderMode" />
     <script src="_framework/blazor.web.js"></script>
-    <script type="module" src="js/setcolor.js"></script>
-    <script type="module"  src="js/createbrand.js"></script>
+   @*  <script type="module" src="js/setcolor.js"></script>
+    <script type="module" src="js/createbrand.js"></script>
+ *@
+    <script type ="module" src="_content/FluentUI2-CSS-RazorClassLibrary/js/createbrand.js"></script>
 </body>
 
 </html>
@@ -38,22 +40,10 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        //GlobalRenderMode.DataChanged -= GlobalRenderMode_DataChanged;
-       // GlobalRenderMode.DataChanged += GlobalRenderMode_DataChanged;
-        //  globalRenderMode.DataChanged+=GlobalRenderMode_DataChanged; 
+       
     }
     private IComponentRenderMode? PageRenderMode => GlobalRenderMode.IsInteractive? InteractiveServer : null;
 
 
-    private void GlobalRenderMode_DataChanged(object sender, bool interactive)
-    {
-        try{
-            nm.Refresh();
-            // InvokeAsync(StateHasChanged);
-        }
-        catch(Exception)
-        {
-            
-        }
-    }
+   
 }

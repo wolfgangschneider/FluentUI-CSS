@@ -1,0 +1,90 @@
+﻿input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    --size: 16px;
+    outline: none;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: var(--colorNeutralBackground1);
+    border: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
+    border-radius: var(--borderRadiusCircular);
+    box-sizing: border-box;
+    position: relative;
+    width: var(--size);
+    /**/
+    aspect-ratio: 1 / 1;
+    &:hover {}
+
+    &:hover:active {}
+
+    :active {}
+
+    &:focus {}
+
+    &:focus-visible {}
+
+    &:focus-within {
+       
+    }
+
+    &:checked {
+        border: 1px solid var(--colorBrandBackground);
+    }
+
+    &:checked:after {
+        
+        --size: 10px;
+        display: block;
+        content: '';
+        box-sizing: border-box;
+        /*
+        border: 0px solid var(--colorBrandBackground);
+        */
+        border-radius: 100px;
+        
+        background-color: var(--colorBrandBackground);
+        aspect-ratio: 1 / 1;
+        height: var(--size);
+        position: relative;
+        /*
+        top: calc(((var(--parent) - var(--strokeWidthThin) *2.0) - var(--size)) /2.0);
+        left: calc(((var(--parent) - var(--strokeWidthThin) *2.0) - var(--size)) /2.0);
+        */
+         top: 2px;
+        left: 2px;
+    }
+    &:checked:disabled:after {
+
+        background-color: var(--colorNeutralForegroundDisabled);
+        /*the icon color !!!*/
+
+    }
+    &:checked:hover:not(:disabled)::after {
+        accent-color: var(--colorBrandBackgroundHover);
+        background-color: var(--colorBrandBackgroundHover);
+        border-color: var(--colorBrandBackgroundHover);
+    }
+
+    &:checked:hover:active:not(:disabled)::after {
+        accent-color: var(--colorBrandBackgroundPressed);
+        background-color: var(--colorBrandBackgroundPressed);
+        border-color: var(--colorBrandBackgroundPressed);
+    }
+    &:disabled,
+    &:disabled:hover {
+        background-color: var(--colorNeutralBackgroundDisabled);
+        border-color: var(--colorNeutralStrokeDisabled);
+        /**/
+        
+        pointer-events: none;
+    }
+   
+    &.invalid,
+    &:invalid {
+        border: var(--strokeWidthThin) solid var(--colorPaletteRedBorder2);
+    }
+    &.invalid:after,
+    &:invalid:after {
+        background-color: var(--colorPaletteRedBorder2);
+    }
+}

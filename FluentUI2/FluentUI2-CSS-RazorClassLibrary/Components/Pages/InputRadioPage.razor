@@ -1,0 +1,59 @@
+﻿@page "/inputradio"
+@{
+    string controlName = "InputRadio";
+}
+<h1>@controlName</h1>
+
+<p>
+    <a href="https://web-components.fluentui.dev/?path=/docs/components-radio--docs" target="_blank">See on Web Components v3</a>
+</p>
+<Showcase>
+    <label>
+
+        <input type="radio"  />
+
+    </label>
+</Showcase>
+<h2>STORIES</h2>
+
+<h3>Default</h3>
+<Showcase>
+    <label>
+        <input type="radio" />
+        @controlName
+    </label>
+</Showcase>
+
+<h3>Without label</h3>
+<Showcase>
+    <input type="radio"   />
+</Showcase>
+
+<h3>Disabled</h3>
+<Showcase>
+    <label>
+        <input type="radio" disabled />
+        Disabled @controlName
+    </label>
+</Showcase>
+
+
+
+<h3>Invalied</h3>
+<div >
+    <label>
+         <input type="radio" class="invalid"  />
+        Invalied  @controlName Blazor (class .invalid)
+    </label>
+    <label>
+        <input  type="radio" required />
+        Invalied  @controlName CSS :invalid
+    </label>
+</div>
+
+@code {
+    bool value;
+
+
+}
+

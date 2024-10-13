@@ -24,6 +24,7 @@ app.UseAntiforgery();
 
 app.MapStaticAssets();
 app.MapRazorComponents<App>()
+     //.AddAdditionalAssemblies(typeof(FluentUI2_CSS_RazorClassLibrary.Components.Layout.NavMenu).Assembly)
     .AddInteractiveServerRenderMode();
 
 app.Run();

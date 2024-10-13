@@ -2,7 +2,7 @@
 
 Of course, the whole why, how, and wherefore will follow. But for now, a few screenshots.
 
-Demo: https://fluentuicss-ejhac8c2e3a3b6dw.germanywestcentral-01.azurewebsites.net/ !! This is a 60-minute free Azure server, which means the server could be down.
+Demo: https://black-bay-011039603.5.azurestaticapps.net
 
 
 ![image](https://github.com/user-attachments/assets/b30e6552-2ba8-4ef9-b9d8-4d29ce403fc6)

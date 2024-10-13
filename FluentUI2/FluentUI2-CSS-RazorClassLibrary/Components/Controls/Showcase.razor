@@ -1,0 +1,55 @@
+﻿
+
+@inject IJSRuntime JSRuntime
+<div style="display: grid; grid: auto auto auto" >
+    <div @ref="elRef" @attributes="InputAttributes" class="showcase @isOpen">
+        @ChildContent
+
+    </div>
+    <button style="justify-self:end; margin-right:20px; margin-top:-32px" class="button--size-small" @onclick="Open">@((schowCode) ? "Hide" : "Show") code</button>
+    @if (@schowCode)
+    {
+        <div class="sourceCode">
+            <pre>
+                <code>
+                    @source
+                </code>
+                
+            </pre>
+          
+        </div>
+    }
+</div>
+
+@code {
+    private IJSObjectReference? jsModule;
+    ElementReference elRef;
+    string isOpen => (schowCode) ? "codeopen" : "";
+    bool schowCode = false;
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> InputAttributes { get; set; } 
+    string? source;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        // if (firstRender )
+        // {
+        //     source = await JSRuntime.InvokeAsync<string>("getContent", elRef);
+        // }
+
+    }
+
+    async void Open()
+    {
+                                                  
+        if (jsModule == null)
+            jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/FluentUI2-CSS-RazorClassLibrary/Components/Controls/Showcase.razor.js");
+        source = await jsModule.InvokeAsync<string>("getHTML", elRef);
+        schowCode = !schowCode;
+        StateHasChanged();
+    }
+}

@@ -1,0 +1,73 @@
+﻿@page "/inputnumber"
+<h1>Input Number</h1>
+
+<Showcase>
+    <label>
+        Input Label
+        <InputNumber  @bind-Value="@number"/>
+   
+    </label>
+</Showcase>
+<h2>STORIES</h2>
+
+<h3>Default</h3>
+<Showcase>
+    <label>
+        Input Label
+        <InputNumber @bind-Value="@number" />
+    </label>
+</Showcase>
+
+<h3>Without Label</h3>
+<div >
+    <InputNumber style=" max-width: 400px;" @bind-Value="@number" />
+</div>
+
+<h3>Disabled</h3>
+<Showcase>
+    <label>
+        Disabled Input
+        <InputNumber disabled @bind-Value="@number" />
+    </label>
+</Showcase>
+<h3>Placeholder</h3>
+<div >
+    <label>
+        Input with a placeholder
+        <InputNumber @bind-Value="@numberPlaceholder" placeholder="Placeholder text" />
+    </label>
+</div>
+<h3>Read Only</h3>
+<Showcase>
+    <label>
+        Read-only value
+       
+        <InputNumber readonly @bind-Value="@number" />
+    </label>
+</Showcase>
+<h3>Invalied</h3>
+<Showcase>
+    <label>
+ 
+        <InputNumber class="invalid" @bind-Value="@number2" />
+    </label>
+    
+</Showcase>
+
+<h3>Inline (Blazor like)</h3>
+<Showcase>
+ 
+        The quick brown
+    <InputNumber style="display:inline-flex" @bind-Value="@numberInline1" placeholder="noun" />
+        jumped over the
+    <InputNumber style="display:inline-flex" @bind-Value="@numberInline1" placeholder="adjective" />
+        dog.
+</Showcase>
+@code {
+    int number;
+    int number2;
+    int numberInline1;
+    int numberInline2;
+    int? numberPlaceholder = null;
+
+}

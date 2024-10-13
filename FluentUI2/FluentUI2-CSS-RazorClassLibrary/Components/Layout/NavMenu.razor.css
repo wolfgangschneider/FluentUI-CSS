@@ -1,0 +1,22 @@
+nav.Navigation--Verical.collapsed {
+    width: fit-content;
+}
+
+.collapsed * span {
+    display: none;
+/*    animation-name: example;
+    animation-duration: 4s; */
+}
+
+.collapsed * svg {
+    margin-right: 4px;
+}
+@keyframes example {
+   /* from {
+        display: initial;
+    }*/
+
+    to {
+        width:0;
+    }
+}

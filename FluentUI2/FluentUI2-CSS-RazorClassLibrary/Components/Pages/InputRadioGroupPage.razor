@@ -1,0 +1,100 @@
+﻿@page "/inputRadioGroup"
+@{
+    string controlName = "InputRadioGroup";
+}
+<h1>@controlName</h1>
+
+<p>
+    <a href="https://web-components.fluentui.dev/?path=/docs/components-radiogroup--docs" target="_blank">See on Web Components v3</a>
+</p>
+<Showcase>
+    <label>
+        @controlName 
+        <span class="radiogroup">
+        <InputRadioGroup class="aaaa" @bind-Value="@value">
+            @foreach (var fruit in Enum.GetValues(typeof(Fruits)))
+            {
+                <label><InputRadio value="@fruit"/>@fruit</label>
+            }
+        </InputRadioGroup>
+        </span>
+
+    </label>
+</Showcase>
+<h2>STORIES</h2>
+
+<h3>Default</h3>
+<Showcase>
+   <label>
+        @controlName 
+        <span class="radiogroup">
+        <InputRadioGroup class="aaaa" @bind-Value="@value">
+            @foreach (var fruit in Enum.GetValues(typeof(Fruits)))
+            {
+                <label><InputRadio value="@fruit"/>@fruit</label>
+            }
+        </InputRadioGroup>
+        </span>
+
+    </label>
+</Showcase>
+<h3>Vertical</h3>
+<Showcase>
+   <label>
+        @controlName Verical
+        <span class="radiogroup radiogroup--orientation-vertical">
+        <InputRadioGroup class="aaaa" @bind-Value="@value">
+            @foreach (var fruit in Enum.GetValues(typeof(Fruits)))
+            {
+                <label><InputRadio value="@fruit"/>@fruit</label>
+            }
+        </InputRadioGroup>
+        </span>
+
+    </label>
+</Showcase>
+
+<h3>Without label</h3>
+<Showcase>
+    <span class="radiogroup"
+    <InputRadioGroup @bind-Value="@value">
+        <InputRadioGroup class="aaaa" @bind-Value="@value">
+            @foreach (var fruit in Enum.GetValues(typeof(Fruits)))
+            {
+                <label><InputRadio value="@fruit"/>@fruit</label>
+            }
+        </InputRadioGroup>
+    </InputRadioGroup>
+    </span>
+</Showcase>
+
+<h3>Disabled</h3>
+<Showcase>
+   <label>
+        @controlName  disabled
+        <span class="radiogroup">
+        <InputRadioGroup disabled @bind-Value="@value">
+            @foreach (var fruit in Enum.GetValues(typeof(Fruits)))
+            {
+                <label><InputRadio disabled value="@fruit"/>@fruit</label>
+            }
+        </InputRadioGroup>
+        </span>
+
+    </label>
+</Showcase>
+
+
+
+
+@code {
+
+    enum Fruits { Apple,Pear,Banana,Orange  }
+    Fruits? _selectedFruits = null;
+    int value;
+
+    int number;
+
+
+}
+

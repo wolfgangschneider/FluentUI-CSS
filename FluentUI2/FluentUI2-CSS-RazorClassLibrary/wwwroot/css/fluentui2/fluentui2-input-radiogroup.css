@@ -1,0 +1,9 @@
+﻿span.radiogroup {
+    display: flex;
+    gap: var(--spacingVerticalXL);
+}
+span.radiogroup.radiogroup--orientation-vertical
+{
+   flex-direction: column;
+   gap: var(--spacingHorizontalL);
+}

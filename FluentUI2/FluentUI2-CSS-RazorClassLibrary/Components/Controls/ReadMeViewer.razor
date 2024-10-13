@@ -1,0 +1,143 @@
+﻿<h3>ReadMeViewer</h3>
+ <style>
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+
+    <h1>Input Controls in Different States</h1>
+    <div class="container">
+        <div class="input-group">
+            <label>Text Input (default):
+                <input type="text" name="text-input">
+            </label>
+        </div>
+        <div class="input-group">
+            <label>Text Input (disabled):
+                <input type="text" name="text-input-disabled" disabled>
+            </label>
+        </div>
+        <div class="input-group">
+            <label>Password Input:
+                <input type="password" name="password-input">
+            </label>
+        </div>
+        <div class="input-group">
+            <label>Checkbox (checked):
+                <input type="checkbox" name="checkbox-input" checked>
+            </label>
+        </div>
+        <div class="input-group">
+            <label>Checkbox (unchecked):
+                <input type="checkbox" name="checkbox-input-unchecked">
+            </label>
+        </div>
+        <div class="input-group">
+            <label>Radio Button (selected):
+                <input type="radio" name="radio-group" checked>
+            </label>
+        </div>
+        <div class="input-group">
+            <label>Radio Button (unselected):
+                <input type="radio" name="radio-group">
+            </label>
+        </div>
+        <div class="input-group">
+            <label>Select (default):
+                <select name="select-input">
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                </select>
+            </label>
+        </div>
+        <div class="input-group">
+            <label>Select (disabled):
+                <select name="select-input-disabled" disabled>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                </select>
+            </label>
+        </div>
+        <div class="input-group">
+            <label>Textarea:
+                <textarea name="textarea-input" rows="4" cols="50"></textarea>
+            </label>
+        </div>
+        <div class="input-group">
+            <label>Textarea (disabled):
+                <textarea name="textarea-input-disabled" rows="4" cols="50" disabled></textarea>
+            </label>
+        </div>
+        <div class="input-group">
+            <label>File Input:
+                <input type="file" name="file-input">
+            </label>
+        </div>
+        <div class="input-group">
+            <label>Range Input:
+                <input type="range" name="range-input" min="0" max="100">
+            </label>
+        </div>
+        <div class="input-group">
+            <label>Date Input:
+                <input type="date" name="date-input">
+            </label>
+        </div>
+        <div class="input-group">
+            <label>Color Input:
+                <input type="color" name="color-input">
+            </label>
+        </div>
+        <div class="input-group">
+            <label>Number Input:
+                <input type="number" name="number-input" min="0" max="10">
+            </label>
+        </div>
+        <div class="input-group">
+            <label>Email Input:
+                <input type="email" name="email-input">
+            </label>
+        </div>
+        <div class="input-group">
+            <label>URL Input:
+                <input type="url" name="url-input">
+            </label>
+        </div>
+        <div class="input-group">
+            <label>Telephone Input:
+                <input type="tel" name="tel-input">
+            </label>
+        </div>
+        <div class="input-group">
+            <label>Search Input:
+                <input type="search" name="search-input">
+            </label>
+        </div>
+        <div class="input-group">
+            <label>Submit Button:
+                <input type="submit" name="submit-button">
+            </label>
+        </div>
+        <div class="input-group">
+            <label>Reset Button:
+                <input type="reset" name="reset-button">
+            </label>
+        </div>
+        <div class="input-group">
+            <label>Button:
+                <input type="button" name="button" value="Click Me">
+            </label>
+        </div>
+    </div>
+
+@code {
+
+}

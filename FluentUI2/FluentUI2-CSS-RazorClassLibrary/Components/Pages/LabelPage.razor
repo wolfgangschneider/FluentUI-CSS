@@ -1,0 +1,153 @@
+﻿@page "/label"
+<h1>Label</h1>
+
+<Showcase>
+    <label>Label</label>
+</Showcase>
+<h3>Disabled</h3>
+<Showcase>
+    <label>
+        Label
+        <input disabled />
+    </label>
+</Showcase>
+<h2>Position</h2>
+<h3>Default</h3>
+
+<p>
+    The value will be used to create a label HTML element for the input component. It is usually displayed just above the input field. For a checkbox it is displayed after the input field
+    <a href="https://www.fluentui-blazor.net/Forms">Blazor Fluent UI</a>
+</p>
+<Showcase style="display:flex;flex-direction:column;    row-gap: var(--spacingVerticalS);">
+    <label>
+        Text
+        <input type="text" />
+    </label>
+    <label>
+        TextArear
+        <textarea />
+    </label>
+    <label>
+        Select
+        <select>
+            <option value="" disabled hidden selected>Select</option>
+            <option>Action 1</option>
+            <option>Action 2</option>
+            <option>Action 3</option>
+        </select>
+    </label>
+    <label>
+        Number
+        <input type="number" />
+    </label>
+
+
+    <label>
+        Please select your favorite fruit:
+        <span class="radiogroup">
+            <label>
+                <input type="radio" name="fav_language" value="Apple" />
+                Apple
+            </label>
+
+            <label>
+                <input type="radio" name="fav_language" value="Pear" />
+                Pear
+            </label>
+
+            <label>
+                <input type="radio" name="fav_language" value="Banana" />
+                Banana
+            </label>
+        </span>
+
+    </label>
+
+    <label>
+        <input type="checkbox" />
+        Checkbox
+    </label>
+    <label>
+        <input type="radio" />
+        Radio
+    </label>
+
+
+</Showcase>
+<h3>Left</h3>
+<Showcase style="display:flex;flex-direction:column;    row-gap: var(--spacingVerticalS);">
+    <label class="label--position-left">
+        Text
+        <input type="text" />
+    </label>
+    <label class="label--position-left">
+        TextArear
+        <textarea />
+    </label>
+    <label class="label--position-left">
+        Select
+        <select>
+            <option value="" disabled hidden selected>Select</option>
+            <option>Action 1</option>
+            <option>Action 2</option>
+            <option>Action 3</option>
+        </select>
+    </label>
+    <label class="label--position-left">
+        Number
+        <input type="number" />
+    </label>
+
+    <label class="label--position-left">
+        Please select your favorite fruit:
+        <span class="radiogroup">
+            <label>
+                <input type="radio" name="fav_language" value="Apple" />
+                Apple
+            </label>
+
+            <label>
+                <input type="radio" name="fav_language" value="Pear" />
+                Pear
+            </label>
+
+            <label>
+                <input type="radio" name="fav_language" value="Banana" />
+                Banana
+            </label>
+
+
+        </span>
+
+    </label>
+    <label class="label--position-left">
+        Checkbox
+        <input type="checkbox" />
+
+    </label>
+    <label class="label--position-left">
+        Radio
+        <input type="radio" />
+    </label>
+
+
+
+    <label> </label>
+</Showcase>
+<h1>Size</h1>
+<Showcase style="display: flex;justify-content: space-evenly;">
+    <label class="label--size-small">Small Label</label>
+    <label class="label--size-medium">Medium Label</label>
+    <label class="label--size-large">Large Label</label>
+</Showcase>
+<h1>Weight</h1>
+<Showcase style="display: flex;justify-content: space-evenly;">
+    <label class="label--weight-regular">Regular Label</label>
+    <label class="label--weight-semibold">Semibold Label</label>
+</Showcase>
+
+
+
+@code {
+
+}

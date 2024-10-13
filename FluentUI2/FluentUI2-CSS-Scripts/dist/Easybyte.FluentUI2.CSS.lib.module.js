@@ -1781,4 +1781,4 @@ export {
   setFluentui2BrandTheme,
   setFluentui2Theme
 };
-//# sourceMappingURL=Easybyte.FluentUI2.CSS.lib.module.js.map
+//# sourceMappingURL=easybyte.fluentui2.css.lib.module.js.map
