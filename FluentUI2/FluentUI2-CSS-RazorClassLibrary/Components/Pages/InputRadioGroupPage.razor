@@ -11,10 +11,10 @@
     <label>
         @controlName 
         <span class="radiogroup">
-        <InputRadioGroup class="aaaa" @bind-Value="@value">
+        <InputRadioGroup @bind-Value="@value1">
             @foreach (var fruit in Enum.GetValues(typeof(Fruits)))
             {
-                <label><InputRadio value="@fruit"/>@fruit</label>
+                <label><InputRadio value="@((int)@fruit)"/>@fruit</label>
             }
         </InputRadioGroup>
         </span>
@@ -28,10 +28,10 @@
    <label>
         @controlName 
         <span class="radiogroup">
-        <InputRadioGroup class="aaaa" @bind-Value="@value">
+        <InputRadioGroup  @bind-Value="@value2">
             @foreach (var fruit in Enum.GetValues(typeof(Fruits)))
             {
-                <label><InputRadio value="@fruit"/>@fruit</label>
+                    <label><InputRadio value="@((int)@fruit)" />@fruit</label>
             }
         </InputRadioGroup>
         </span>
@@ -43,10 +43,10 @@
    <label>
         @controlName Verical
         <span class="radiogroup radiogroup--orientation-vertical">
-        <InputRadioGroup class="aaaa" @bind-Value="@value">
+        <InputRadioGroup  @bind-Value="@value3">
             @foreach (var fruit in Enum.GetValues(typeof(Fruits)))
             {
-                <label><InputRadio value="@fruit"/>@fruit</label>
+                    <label><InputRadio value="@((int)@fruit)" />@fruit</label>
             }
         </InputRadioGroup>
         </span>
@@ -57,14 +57,14 @@
 <h3>Without label</h3>
 <Showcase>
     <span class="radiogroup"
-    <InputRadioGroup @bind-Value="@value">
-        <InputRadioGroup class="aaaa" @bind-Value="@value">
+   
+        <InputRadioGroup  @bind-Value="@value4">
             @foreach (var fruit in Enum.GetValues(typeof(Fruits)))
             {
-                <label><InputRadio value="@fruit"/>@fruit</label>
+                   <label><InputRadio value="@((int)@fruit)"/>@fruit</label>
             }
         </InputRadioGroup>
-    </InputRadioGroup>
+  
     </span>
 </Showcase>
 
@@ -73,10 +73,10 @@
    <label>
         @controlName  disabled
         <span class="radiogroup">
-        <InputRadioGroup disabled @bind-Value="@value">
+        <InputRadioGroup disabled @bind-Value="@value5">
             @foreach (var fruit in Enum.GetValues(typeof(Fruits)))
             {
-                <label><InputRadio disabled value="@fruit"/>@fruit</label>
+                    <label><InputRadio disabled value="@((int)@fruit)" />@fruit</label>
             }
         </InputRadioGroup>
         </span>
@@ -91,9 +91,13 @@
 
     enum Fruits { Apple,Pear,Banana,Orange  }
     Fruits? _selectedFruits = null;
-    int value;
+    int? value1;
+    int? value2;
+    int? value3;
+    int? value4;
+    int value5 =2;
 
-    int number;
+   
 
 
 }
