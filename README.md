@@ -16,7 +16,10 @@ It took some time to understand the relationships between Fast, Fluent UI, Fluen
 
 In short, Fluent UI Blazor is based on Fluent UI 1, while Fluent UI web components v3.0.0-beta.68 are already based on Fluent UI 2. Between Fluent UI 1 and Fluent UI 2, not only do the controls look slightly different, but unfortunately, different design tokens are also used. TThe Fluent UI Blazor team is working on a version using Web Controls v3. Therefore, we have decided to use the Web Controls v3 look and design tokens.
 ## Boundaries
-...
+
+* We only want to style the Blazor input controls and possibly the other HTML input elements, without creating additional controls. This means that only a small portion of the controls provided in Fluent UI Web Controls have been replicated.
+* At the moment, we do not want to use JavaScript to create or style controls. This has a negative impact on some components like InputDate and InputNumber. But we believe they are good enough.
+  
 ## How to use
 ### The simplest way
 *  copy folder FluentUI2/FluentUI2-CSS-RazorClassLibrary/wwwroot/css to your project
@@ -27,14 +30,14 @@ In short, Fluent UI Blazor is based on Fluent UI 1, while Fluent UI web componen
 *  select Cutom theme
 *  chage Key color value , Hue Torision Vibracy
 *  copy the created html css selector and remove the html selector from  /fluentui2css-default-app-theme.css.
-...
+
 ### With a Light Darkmode switch
 ...
 ## Project structure
 ...
 ## Demo ans screenshots
 
-Demo: [https://black-bay-011039603.5.azurestaticapps.net](https://www.fluentui2css.easybyte.at/)
+Demo: [https://www.fluentui2css.easybyte.at/](https://www.fluentui2css.easybyte.at/)
 
 
 ![image](https://github.com/user-attachments/assets/b30e6552-2ba8-4ef9-b9d8-4d29ce403fc6)
