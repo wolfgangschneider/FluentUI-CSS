@@ -10,7 +10,14 @@ FluentUI-CSS is a small collection of css files simulate the fluent UI design th
 ## How to use
 ...
 ### The simplest way
-Copy all css files you want to your project and inclue 
+*  copy folder FluentUI2/FluentUI2-CSS-RazorClassLibrary/wwwroot/css to your project
+*  link /fluentui2css/fluentui2css.css (this will import all other css files from this folder)
+*  link /fluentui2css-default-app-theme.css (this will set the default Fluent ui2 theme)
+##### how to change theme
+* open https://www.fluentui2css.easybyte.at/
+*  select Cutom theme
+*  chage Key color value , Hue Torision Vibracy
+*  copy the created html css selector and remove the html selector from  /fluentui2css-default-app-theme.css.
 ...
 ### With a Light Darkmode switch
 ...
