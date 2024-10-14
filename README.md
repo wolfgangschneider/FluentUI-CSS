@@ -49,12 +49,10 @@ tod
 ## Demo and screenshots
 
 Demo: [Fluent UI2 CSS](https://www.fluentui2css.easybyte.at/)
-![image](https://github.com/user-attachments/assets/c7ddc604-2435-43fc-b8ca-9b2e43627530)
 
-![image](https://github.com/user-attachments/assets/1376516c-0c10-4461-9fc4-66563d35d7c8)
-
-![image](https://github.com/user-attachments/assets/9d8cf635-66b7-458c-bcdc-1864c381eccb)
-
-![image](https://github.com/user-attachments/assets/6357a546-902e-4362-9562-fd9311b00baa)
+![image](https://github.com/user-attachments/assets/f9b90374-ac89-4978-80fe-3ef337001a67)
+![image](https://github.com/user-attachments/assets/3d076021-3120-421e-b69e-2ef19855da40)
+![image](https://github.com/user-attachments/assets/1aa4bbe0-c67d-45f5-8275-d400dcee994c)
+![image](https://github.com/user-attachments/assets/845eb421-010d-4fcf-916a-bb07b8d3fbfb)
 
 
