@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <Folder Include="Layout\" />
-    <Folder Include="wwwroot\css\fluentui2\" />
     <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
