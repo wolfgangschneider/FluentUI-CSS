@@ -1,6 +1,6 @@
 # FluentUI-CSS
-
 FluentUI-CSS is a small collection of css files simulate the fluent UI design theme.
+
 ## Motivation 
 ...
 ## Goals
@@ -8,7 +8,6 @@ FluentUI-CSS is a small collection of css files simulate the fluent UI design th
 ## Boundaries
 ...
 ## How to use
-...
 ### The simplest way
 *  copy folder FluentUI2/FluentUI2-CSS-RazorClassLibrary/wwwroot/css to your project
 *  link /fluentui2css/fluentui2css.css (this will import all other css files from this folder)
@@ -22,8 +21,8 @@ FluentUI-CSS is a small collection of css files simulate the fluent UI design th
 ### With a Light Darkmode switch
 ...
 ## Project structure
-
-Of course, the whole why, how, and wherefore will follow. But for now, a few screenshots.
+...
+## Demo ans screenshots
 
 Demo: [https://black-bay-011039603.5.azurestaticapps.net](https://www.fluentui2css.easybyte.at/)
 
