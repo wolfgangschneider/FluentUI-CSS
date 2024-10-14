@@ -2,7 +2,13 @@
 FluentUI-CSS is a small collection of css files simulate the fluent UI design theme.
 
 ## Motivation 
-...
+We are a small company specializing in Line of Business applications, primarily using ASP.Net Blazor. While searching for a replacement for the dotnet Blazor Web App template, we came across the Fluent UI Blazor project. We were very impressed with its look and feel as it aligns with the latest Microsoft products, which is very appealing to our customers. However, we quickly realized that we would need to modify our existing libraries to use the components of this library.
+
+There were three reasons against this:
+
+Firstly, we fear that Fluent UI Blazor might become “silverlighted.”
+Secondly, we did not want to create dependencies on third-party libraries for our own libraries. On the other hand, we might want to use the Fluent UI Blazor library for new projects and integrate our own libraries.
+Thirdly, we are concerned that if we need another third-party library, it might not match the look and feel of Fluent UI Blazor.
 ## Goals
 ...
 ## Boundaries
