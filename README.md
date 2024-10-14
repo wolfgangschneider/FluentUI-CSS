@@ -14,7 +14,7 @@ Style the Blazor components (Button, NavBar, InputCheckbox, InputDate, InputNumb
 ### Why Fluent UI Web Components and not Fluent UI Blazor
 It took some time to understand the relationships between Fast, Fluent UI, Fluent UI Blazor, Fluent web components, Fluent UI React, and all their versions.
 
-In short, Fluent UI Blazor is based on Fluent UI 1, while Fluent UI web components v3.0.0-beta.68 are already based on Fluent UI 2. Between Fluent UI 1 and Fluent UI 2, not only do the controls look slightly different, but unfortunately, different design tokens are also used. TThe Fluent UI Blazor team is working on a version using Web Controls v3. Therefore, we have decided to use the Web Controls v3 look and design tokens.
+In short, Fluent UI Blazor is based on Fluent UI 1, while Fluent UI web components v3.0.0-beta.68 are already based on Fluent UI 2. Between Fluent UI 1 and Fluent UI 2, not only do the controls look slightly different, but unfortunately, different design tokens are also used. TThe Fluent UI Blazor team is working on a version using Web Controls v3. Therefore, we have decided to use the Web Controls v3 look and design tokens. (except nav )
 ## Boundaries
 
 * We only want to style the Blazor input controls and possibly the other HTML input elements, without creating additional controls. This means that only a small portion of the controls provided in Fluent UI Web Controls have been replicated.
@@ -32,17 +32,29 @@ In short, Fluent UI Blazor is based on Fluent UI 1, while Fluent UI web componen
 *  copy the created html css selector and remove the html selector from  /fluentui2css-default-app-theme.css.
 
 ### With a Light Darkmode switch
-...
-## Project structure
-...
-## Demo ans screenshots
+todo
+### Project structure
+tod
+### Additional info
 
-Demo: [https://www.fluentui2css.easybyte.at/](https://www.fluentui2css.easybyte.at/)
+[Fluent UI React Components](https://react.fluentui.dev/?path=/docs/concepts-introduction--docs)
+
+[Fluent UI Blazor](https://www.fluentui-blazor.net/)
+
+[Fluent UI Web Components](https://web-components.fluentui.dev/)
+
+[Fluent UI2 CSS](https://www.fluentui2css.easybyte.at/)
 
 
-![image](https://github.com/user-attachments/assets/b30e6552-2ba8-4ef9-b9d8-4d29ce403fc6)
+## Demo and screenshots
 
-![image](https://github.com/user-attachments/assets/17ee5329-d885-4ce5-a068-e329ef7c2b12)
+Demo: [Fluent UI2 CSS](https://www.fluentui2css.easybyte.at/)
+![image](https://github.com/user-attachments/assets/c7ddc604-2435-43fc-b8ca-9b2e43627530)
 
-![image](https://github.com/user-attachments/assets/a98f47aa-3f14-41ac-9ed8-acee50caf4ea)
+![image](https://github.com/user-attachments/assets/1376516c-0c10-4461-9fc4-66563d35d7c8)
+
+![image](https://github.com/user-attachments/assets/9d8cf635-66b7-458c-bcdc-1864c381eccb)
+
+![image](https://github.com/user-attachments/assets/6357a546-902e-4362-9562-fd9311b00baa)
+
 
