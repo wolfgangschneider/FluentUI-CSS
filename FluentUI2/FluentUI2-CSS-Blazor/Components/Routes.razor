@@ -1,7 +1,8 @@
-﻿@using FluentUI2_CSS_RazorClassLibrary.Components.Layout
-<Router AppAssembly="typeof(Program).Assembly" AdditionalAssemblies="new[] { typeof(MainLayout).Assembly }">
+﻿
+
+<Router AppAssembly="typeof(Program).Assembly" AdditionalAssemblies="new[] { typeof( FluentUI2_CSS_RazorClassLibrary.Components.Pages.ButtonPage).Assembly }">
     <Found Context="routeData">
         <RouteView RouteData="routeData" DefaultLayout="typeof(MainLayout)" />
-      @*   <FocusOnNavigate RouteData="routeData" Selector="h1" /> *@
+ 
     </Found>
 </Router>

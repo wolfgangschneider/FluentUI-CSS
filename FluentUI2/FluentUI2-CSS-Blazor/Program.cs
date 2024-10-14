@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
+    
     .AddInteractiveServerComponents();
 //builder.Services.AddCascadingValue(sp => new GlobalRenderMode() );
 var app = builder.Build();
@@ -24,7 +25,7 @@ app.UseAntiforgery();
 
 app.MapStaticAssets();
 app.MapRazorComponents<App>()
-     //.AddAdditionalAssemblies(typeof(FluentUI2_CSS_RazorClassLibrary.Components.Layout.NavMenu).Assembly)
+    .AddAdditionalAssemblies(typeof(FluentUI2_CSS_RazorClassLibrary.Components.Layout.NavMenu).Assembly)
     .AddInteractiveServerRenderMode();
 
 app.Run();

@@ -1,4 +1,4 @@
-﻿
+﻿ @using System.Text.RegularExpressions;
 
 @inject IJSRuntime JSRuntime
 <div style="display: grid; grid: auto auto auto" >
@@ -45,11 +45,17 @@
 
     async void Open()
     {
-                                                  
-        if (jsModule == null)
-            jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/FluentUI2-CSS-RazorClassLibrary/Components/Controls/Showcase.razor.js");
-        source = await jsModule.InvokeAsync<string>("getHTML", elRef);
         schowCode = !schowCode;
+        if (schowCode)
+        {
+            if (jsModule == null)
+                jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/FluentUI2-CSS-RazorClassLibrary/Components/Controls/Showcase.razor.js");
+            var inner = await jsModule.InvokeAsync<string>("getHTML", elRef);
+            //source = inner;
+            string pattern = "_(.*?)=\"\"";
+            source = Regex.Replace(inner, pattern, "")?.Replace("=\"\"", "");
+        }
         StateHasChanged();
     }
+    
 }
