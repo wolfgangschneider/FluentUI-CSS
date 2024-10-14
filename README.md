@@ -2,15 +2,19 @@
 FluentUI-CSS is a small collection of css files simulate the fluent UI design theme.
 
 ## Motivation 
-We are a small company specializing in Line of Business applications, primarily using ASP.Net Blazor. While searching for a replacement for the dotnet Blazor Web App template, we came across the Fluent UI Blazor project. We were very impressed with its look and feel as it aligns with the latest Microsoft products, which is very appealing to our customers. However, we quickly realized that we would need to modify our existing libraries to use the components of this library.
+We are a small company specializing in Line of Business applications, primarily using ASP.Net Blazor. While searching for a replacement for the dotnet Blazor Web App template, we came across the "Fluent UI Blazor" project. We were very impressed with its look and feel as it aligns with the latest Microsoft products, which is very appealing to our customers. However, we quickly realized that we would need to modify our existing libraries to use the components of this library.
 
 There were three reasons against this:
 
 Firstly, we fear that Fluent UI Blazor might become “silverlighted.”
 Secondly, we did not want to create dependencies on third-party libraries for our own libraries. On the other hand, we might want to use the Fluent UI Blazor library for new projects and integrate our own libraries.
-Thirdly, we are concerned that if we need another third-party library, it might not match the look and feel of Fluent UI Blazor.
+Thirdly, we are concerned that if we need another third-party library, it might not match the look and feel of "Fluent UI Blazor".
 ## Goals
-...
+Style the Blazor components (Button, NavBar, InputCheckbox, InputDate, InputNumber, InputText, InputTextArea, InputSelect, InputRadio) and the underlying HTML elements so that they resemble the "Fluent UI Web Components" as closely as possible. The stylesheets should be usable in both Blazor and pure HTML projects.
+### Why Fluent UI Web Components and not Fluent UI Blazor
+It took some time to understand the relationships between Fast, Fluent UI, Fluent UI Blazor, Fluent web components, Fluent UI React, and all their versions.
+
+In short, Fluent UI Blazor is based on Fluent UI 1, while Fluent UI web components v3.0.0-beta.68 are already based on Fluent UI 2. Between Fluent UI 1 and Fluent UI 2, not only do the controls look slightly different, but unfortunately, different design tokens are also used. TThe Fluent UI Blazor team is working on a version using Web Controls v3. Therefore, we have decided to use the Web Controls v3 look and design tokens.
 ## Boundaries
 ...
 ## How to use
