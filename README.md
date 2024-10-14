@@ -29,7 +29,7 @@ In short, Fluent UI Blazor is based on Fluent UI 1, while Fluent UI web componen
 * open https://www.fluentui2css.easybyte.at/
 *  select Cutom theme
 *  chage Key color value , Hue Torision Vibracy
-*  copy the created html css selector and remove the html selector from  /fluentui2css-default-app-theme.css.
+*  copy the created html css selector and replace the html selector from  /fluentui2css-default-app-theme.css.
 
 ### With a Light Darkmode switch
 todo
