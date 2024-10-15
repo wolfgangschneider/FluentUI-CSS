@@ -157,22 +157,29 @@
         StringBuilder stringBuilder = new StringBuilder();
         if (module == null)
         {
-               // if(RendererInfo.Name == "Server")
-                    module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/FluentUI2-CSS-RazorClassLibrary/js/createbrand.js");
-               // else
-               //    module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./js/createbrand.js");
+            // if(RendererInfo.Name == "Server")
+            module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/FluentUI2-CSS-RazorClassLibrary/js/createbrand.js");
+            // else
+            //    module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./js/createbrand.js");
         }
-    
+
 
         var theme = await module.InvokeAsync<object>("createBrand", Color, HueTorsion/100f, Vibrancy/100f);
-        var result = Newtonsoft.Json.Linq.JObject.Parse(theme.ToString());
 
+        var test = System.Text.Json.JsonSerializer.Deserialize<System.Text.Json.JsonElement>(theme.ToString());
         stringBuilder.Append("html{\n");
-        foreach (Newtonsoft.Json.Linq.JProperty property in result.Properties())
+        foreach (var property in test.EnumerateObject())
         {
-
             stringBuilder.Append($"    --{property.Name}: {property.Value};\n");
         }
+        // var result = Newtonsoft.Json.Linq.JObject.Parse(theme.ToString());
+
+      
+        // foreach (Newtonsoft.Json.Linq.JProperty property in result.Properties())
+        // {
+
+        //     stringBuilder.Append($"    --{property.Name}: {property.Value};\n");
+        // }
         stringBuilder.Append("}");
         cssString = stringBuilder.ToString();
         StateHasChanged();

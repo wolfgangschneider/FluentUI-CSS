@@ -1,11 +1,10 @@
 ﻿
 /*nav link*/
-nav.Navigation--Verical {
-  /*  background-color: var(--colorNeutralBackground4);*/
+nav {
     padding: 0 4px 0 4px;
-    width:250px;
+  
    
-    .nav-item
+.nav-item
 {
     display: flex;
     width: 100%;

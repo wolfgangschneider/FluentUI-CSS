@@ -8,12 +8,11 @@
    
    
     <nav class="Navigation--Verical @collapsedCSS">
-        @if (RendererInfo.IsInteractive)
-        {
+       
             <div class="nav-item" @onclick="@(()=> collapsed=!collapsed)">
                 <svg style="width:20px; height:20px; fill:var(--colorBrandBackground)" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><!--!--><path d="M2.75 18h18.5a.75.75 0 0 1 .1 1.5H2.75a.75.75 0 0 1-.1-1.5h18.6-18.5Zm0-6.5h18.5a.75.75 0 0 1 .1 1.5H2.75a.75.75 0 0 1-.1-1.5h18.6-18.5Zm0-6.5h18.5a.75.75 0 0 1 .1 1.5H2.75a.75.75 0 0 1-.1-1.49h18.6-18.5Z"></path></svg>
             </div>
-        }
+        
         <div class="nav-item">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
                 <svg  focusable="false" viewBox="0 0 20 20" aria-hidden="true"><!--!-->
