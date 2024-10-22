@@ -46,12 +46,12 @@
         color: var(--colorNeutralForeground1);
     }
 
-    &.invalid {
-        /*org web-component border-color: var(--colorPaletteRedBorder2);*/
-        /*more compatible with blazor default .mportant style*/
-        border: none;
-        outline: 1px solid var(--colorPaletteRedBorder2);
-    }
+&.invalid {
+    /*org web-component border-color: var(--colorPaletteRedBorder2);*/
+    /*more compatible with blazor default .mportant style*/
+    border-color : var(--colorPaletteRedBorder2);
+    outline: none;
+}
 
 }
 

@@ -52,13 +52,15 @@ textarea {
     }
 
     /* for blazor .invalid and css :invalid*/
-    &.invalid,
-    &:invalid {
-        /*org web-component border-color: var(--colorPaletteRedBorder2);*/
-        /*more compatible with blazor default .mportant style*/
-        border: none;
-        outline: 1px solid var(--colorPaletteRedBorder2);
-    }
+&.invalid,
+&:invalid {
+    /*org web-component border-color: var(--colorPaletteRedBorder2);*/
+    /*more compatible with blazor default .mportant style*/
+   /* border: none;*/
+    /* outline: 1px solid var(--colorPaletteRedBorder2); <= does not work with width 100%*/ 
+    border: 1px solid var(--colorPaletteRedBorder2);
+    outline:none;
+}
 
 
 
