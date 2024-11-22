@@ -7,3 +7,75 @@ span.radiogroup.radiogroup--orientation-vertical
    flex-direction: column;
    gap: var(--spacingHorizontalL);
 }
+
+/*================*/
+
+
+/*
+label:has(> :first-child:is(input[type="radio"]).tablist)
+{
+    background-color: red;
+    &:has(first-child:checked){
+        background-color: blue;
+    }
+}
+    */
+    span.tablist {
+        display: flex;
+       /* gap: var(--spacingVerticalXL);*/
+    }
+    span.tablist.radiogroup--orientation-vertical
+    {
+       flex-direction: column;
+       gap: var(--spacingHorizontalL);
+    }
+   
+    .tablist > label > input[type="radio"] {
+        display: none;
+    }
+    
+.tablist > label {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    outline: none;
+    box-shadow: none;
+    font-weight: var( --fontWeightRegular);
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 3px solid transparent;
+    background-color: transparent;
+    color: var(--colorNeutralForeground2);
+    padding: 10px 0px;
+    margin: 0 12Px;
+    min-width: initial;
+   /*smal*/
+  /*  padding: 6px 0px;
+  margin: 0 10Px;
+  */
+    
+}
+
+.tablist > label:hover {
+    background-color: transparent;
+    border-color: var(--colorNeutralStroke1Hover);
+    color: var(--colorNeutralForeground1Hover);
+}
+
+/*
+.tablist > label:active {
+    background-color: var(--colorNeutralBackground1Pressed);
+    border-color: var(--colorNeutralStroke1Pressed);
+    color: var(--colorNeutralForeground1Pressed);
+}
+    */
+
+.tablist label:has(input[type="radio"]:checked) {
+    background-color: var( --colorBrandBackground,#1b6ec2);
+    border-color: var( --colorBrandBackground,#1b6ec2);
+    background-color: transparent;
+    color: var(--colorNeutralForeground1Selected);
+    border-bottom-color: var( --colorBrandBackground,#1b6ec2);
+    font-weight: var( --fontWeightSemibold);
+}
+

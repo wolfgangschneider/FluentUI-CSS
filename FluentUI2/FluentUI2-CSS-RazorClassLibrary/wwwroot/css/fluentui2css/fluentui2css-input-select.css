@@ -55,6 +55,26 @@
 
 }
 
+    /*===== not working ====*/
+option {
+    background-color: transparent;
+    appearance: none;
+}
+option:hover ,
+option:focus,
+option:focus-within{
+    background-color: yellow;
+}
+    option::after {
+        content: '✔';
+        color: red;
+    }
+
+select::before {
+    content: '✔';
+    color: red;
+}
+
 /*   select:disabled {
         cursor: not-allowed;
         opacity: var(--disabled-opacity);
