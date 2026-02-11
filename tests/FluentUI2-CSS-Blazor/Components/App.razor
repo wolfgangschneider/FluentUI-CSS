@@ -1,0 +1,51 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+  
+    <link rel="stylesheet" href="@Assets["app.css"]" />
+    <link rel="stylesheet" href="@Assets["css/app-theme.css"]" />
+    <link rel="stylesheet" href="@Assets["FluentUI2-CSS-Blazor.styles.css"]" />
+    <FluentUI2CSS.FluentUI2CSS />
+ 
+ 
+
+    <ImportMap />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <HeadOutlet @rendermode="PageRenderMode" />
+</head>
+
+<body>
+    
+    <Routes @rendermode="PageRenderMode" />
+    <script src="_framework/blazor.web.js"></script>
+ 
+    <script type ="module" src="_content/FluentUI2-CSS-RazorClassLibrary/js/createbrand.js"></script>
+</body>
+
+</html>
+
+@code {
+
+
+    // private static IComponentRenderMode pageRenderMode => null;//"InteractiveServer";
+    [CascadingParameter]
+    private HttpContext HttpContext { get; set; } = default!;
+
+    // [CascadingParameter]
+    // public GlobalRenderMode globalRenderMode { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+       
+    }
+    private IComponentRenderMode? PageRenderMode => GlobalRenderMode.IsInteractive? InteractiveServer : null;
+
+
+   
+}

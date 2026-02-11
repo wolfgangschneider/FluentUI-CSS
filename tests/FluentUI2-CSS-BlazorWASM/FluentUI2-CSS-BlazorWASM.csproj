@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<NoDefaultLaunchSettingsFile>true</NoDefaultLaunchSettingsFile>
+		<StaticWebAssetProjectMode>Default</StaticWebAssetProjectMode>
+		<!-- Test project: Suppress all build output -->
+		<WarningLevel>0</WarningLevel>
+		<NoWarn>$(NoWarn);WASM0001;WASM0060;WASM0062;IL2026;IL2075;IL2111;IL3050;SYSLIB0011;SYSLIB1045;NETSDK1057;NU1701;NU1702;NU1603</NoWarn>
+		<SuppressTrimAnalysisWarnings>true</SuppressTrimAnalysisWarnings>
+		<TrimmerSingleWarn>false</TrimmerSingleWarn>
+		<ILLinkWarningLevel>0</ILLinkWarningLevel>
+		<RunAOTCompilation>false</RunAOTCompilation>
+		<!-- Suppress verbose WASM linker output -->
+		<EmccVerbose>false</EmccVerbose>
+		<WasmBuildOnlyAfterPublish>false</WasmBuildOnlyAfterPublish>
+	</PropertyGroup>
+
+
+	<ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FluentUI2-CSS-RazorClassLibrary\FluentUI2-CSS-RazorClassLibrary.csproj" />
+    <ProjectReference Include="..\FluentUI2-CSS-Scripts\FluentUI2-CSS-Scripts.esproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Layout\" />
+    <Folder Include="wwwroot\js\" />
+  </ItemGroup>
+
+  
+
+</Project>

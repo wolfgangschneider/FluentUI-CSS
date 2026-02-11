@@ -1,0 +1,116 @@
+﻿@using FluentUI2_CSS_Blazor
+
+@using Microsoft.JSInterop
+@using FluentUI2_CSS_RazorClassLibrary
+@inherits LayoutComponentBase
+
+@inject NavigationManager nm;
+
+@inject IJSRuntime JSRuntime
+
+<div class="page" >
+    <div style="column-gap:8px; min-height:3em;display:flex;align-items:center;grid-column:1 / span 2; background-color: var(--colorBrandBackground);">
+        <h3 style="margin-left:8px; width:242px">FluentUI2CSS</h3>
+         
+        @* <form method="post" @onsubmit="Submit" @formname="starship-plain-form">
+            <AntiforgeryToken />
+
+            <div>
+                <button class="ButtonAppearance.Primary" style="min-width:100px" type="submit"> @(RendererInfo.IsInteractive ? "Switch to static" : "Switch to interactive")</button>
+            </div>
+        </form> *@
+        <label class="label--position-left" style="margin-left:20px">
+            Theme:
+            <InputSelect disabled=@(!RendererInfo.IsInteractive) TValue="Themes" @bind-value="@SelectedTheme">
+                @foreach (var color in Enum.GetValues(typeof(Themes)))
+                {
+                    <option value="@color">@color</option>
+                }
+            </InputSelect>
+        </label>
+
+    </div>
+    <div style="grid-row:2; grid-column:1;height:100%;overflow:auto">
+        <NavMenu />
+    </div>
+
+    <main style="grid-row:2; grid-column:2">
+       
+       
+        <article class="content ">
+            @Body
+        </article>
+    </main>
+</div>
+
+<div id="blazor-error-ui" data-nosnippet>
+    An unhandled error has occurred.
+    <a href="." class="reload">Reload</a>
+    <span class="dismiss">🗙</span>
+</div>
+@code{
+    private IJSObjectReference? module;
+    enum Themes{WebLight,WebDark,TeamsLight,TeamsDark,EasybyteLight,EasybyteDark,Custom}
+    Themes _selectedTheme = Themes.WebLight;
+
+    Themes SelectedTheme
+    {
+        get{ return _selectedTheme; }
+        set{ 
+            _selectedTheme = value;
+            GlobalRenderMode.IsCustomCollor = _selectedTheme == Themes.Custom;
+            _= CallJS();
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            //if(RendererInfo.Name == "Server")
+                module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/FluentUI2-CSS-RazorClassLibrary/js/setcolor.js");
+            //else
+            //    module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./js/setcolor.js");
+
+
+            await CallJS();
+        }
+
+    }
+
+
+    private void Submit()
+    {
+
+         GlobalRenderMode.IsInteractive = !RendererInfo.IsInteractive;
+
+        // if (HttpContext != null)
+        //     HttpContext.Response.Redirect("/");
+        // else
+        //     
+        nm.NavigateTo("/",true);
+
+    }
+    async Task CallJS()
+    {
+
+
+        if (SelectedTheme < Themes.EasybyteLight)
+            await module.InvokeVoidAsync("SetTheme", SelectedTheme);
+        else if (SelectedTheme < Themes.Custom)
+            await module.InvokeVoidAsync("SetBrandTheme", SelectedTheme == Themes.EasybyteLight);
+        // else
+        //     Pages.HomePage.LoadCustomTheme(JSRuntime, GlobalRenderMode.CustomTheme.Color, GlobalRenderMode.CustomTheme.HueTorsion, GlobalRenderMode.CustomTheme.Vibrancy);
+
+        GlobalRenderMode.IsCustomCollor = SelectedTheme == Themes.Custom;
+
+        GlobalRenderMode.TriggerDataChanged();
+
+    }
+
+    [CascadingParameter]
+    public GlobalRenderMode globalRenderMode { get; set; } = default!;
+    // [CascadingParameter]
+    // private HttpContext HttpContext { get; set; } = default!;
+   
+}

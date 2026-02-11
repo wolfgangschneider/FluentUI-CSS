@@ -1,0 +1,90 @@
+﻿input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    --size: 16px;
+    background-color: var(--colorNeutralBackground1);
+    border-radius: var(--borderRadiusSmall);
+    border: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative;
+    width: var(--size);
+    min-width: var(--size);
+    aspect-ratio: 1 / 1;
+
+    &:checked {
+        border-color: var(--colorBrandBackground);
+        background-color: var(--colorBrandBackground);
+
+        &:after {
+            display: block;
+            content: '';
+            box-sizing: border-box;
+            background-color: var(--colorNeutralBackground2);
+            aspect-ratio: 1 / 1;
+            position: relative;
+            mask-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.76 3.2c.3.29.32.76.04 1.06l-4.25 4.5a.75.75 0 0 1-1.08.02L2.22 6.53a.75.75 0 0 1 1.06-1.06l1.7 1.7L8.7 3.24a.75.75 0 0 1 1.06-.04Z' fill='white'%3E%3C/path%3E%3C/svg%3E");
+            mask-repeat: no-repeat no-repeat;
+            mask-position: center center;
+            mask-size: cover;
+        }
+
+        &:disabled:after {
+            background-color: var(--colorNeutralForegroundDisabled);
+        }
+
+        &:hover:not(:disabled) {
+            accent-color: var(--colorBrandBackgroundHover);
+            background-color: var(--colorBrandBackgroundHover);
+            border-color: var(--colorBrandBackgroundHover);
+        }
+
+        &:hover:active:not(:disabled) {
+            accent-color: var(--colorBrandBackgroundPressed);
+            background-color: var(--colorBrandBackgroundPressed);
+            border-color: var(--colorBrandBackgroundPressed);
+        }
+    }
+
+    &:disabled,
+    &:disabled:hover {
+        background-color: var(--colorNeutralBackgroundDisabled);
+        border-color: var(--colorNeutralStrokeDisabled);
+        cursor: default;
+        pointer-events: none;
+    }
+
+    /* for blazor .invalid and css :invalid*/
+    &.invalid,
+    &:invalid {
+        border: none;
+        outline: 1px solid var(--colorPaletteRedBorder2);
+    }
+}
+
+/* Indeterminate state */
+input[type="checkbox"]:indeterminate {
+    border-color: var(--colorBrandBackground);
+
+    &:disabled {
+        border-color: var(--colorNeutralForegroundDisabled);
+    }
+
+    &::after {
+        display: block;
+        content: '';
+        box-sizing: border-box;
+        background-color: var(--colorBrandBackground, black);
+        aspect-ratio: 1 / 1;
+        position: relative;
+        mask-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 4c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4Z' fill='white'%3E%3C/path%3E%3C/svg%3E");
+        mask-repeat: no-repeat no-repeat;
+        mask-position: center center;
+        mask-size: cover;
+    }
+
+    &:disabled::after {
+        background-color: var(--colorNeutralForegroundDisabled);
+        border-color: var(--colorNeutralForegroundDisabled);
+    }
+}

@@ -1,0 +1,61 @@
+﻿@page "/inputcheckbox"
+@{
+    string controlName = "InputCheckbox";
+}
+<h1>@controlName</h1>
+
+<p>
+    <a href="https://web-components.fluentui.dev/?path=/docs/components-checkbox--docs" target="_blank">See on Web Components v3</a>
+</p>
+<Showcase>
+    <label>
+
+        <InputCheckbox @bind-Value="@value" />
+
+    </label>
+</Showcase>
+<h2>STORIES</h2>
+
+<h3>Default</h3>
+<Showcase>
+    <label>
+        <InputCheckbox @bind-Value="@value" />
+        @controlName
+    </label>
+</Showcase>
+
+<h3>Without label</h3>
+<Showcase>
+    <InputCheckbox  @bind-Value="@value" />
+</Showcase>
+
+<h3>Disabled</h3>
+<Showcase>
+    <label>
+       <InputCheckbox disabled @bind-Value="@value" />
+        Disabled  @controlName
+    </label>
+</Showcase>
+
+
+
+<h3>Invalied</h3>
+<Showcase>
+    <label>
+        
+        <InputCheckbox class="invalid" @bind-Value="@value" />
+        Invalied  @controlName Blazor (class .invalid)
+    </label>
+    <label>
+      
+        <input type="checkbox" required />
+        Invalied  @controlName CSS :invalid
+    </label>
+</Showcase>
+
+@code {
+    bool value;
+   
+
+}
+

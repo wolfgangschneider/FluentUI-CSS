@@ -1,0 +1,71 @@
+﻿@page "/InputTextArear"
+@{string controlName = "InputTextArea";}
+<h1>@controlName</h1>
+
+<p>
+    <a href="https://web-components.fluentui.dev/?path=/docs/components-textarea--docs" target="_blank">See on Web Components v3</a>
+</p>
+<Showcase >
+    <label>
+       
+        <InputTextArea @bind-Value="@text" />
+
+    </label>
+</Showcase>
+<h2>STORIES</h2>
+
+<h3>Default</h3>
+<Showcase >
+    <label>
+        @controlName
+        <InputTextArea @bind-Value="@text" />
+    </label>
+</Showcase>
+
+<h3>Without label</h3>
+<Showcase >
+    <InputTextArea style="width:400px;height:100px;" @bind-Value="@text" />
+</Showcase>
+
+<h3>Disabled</h3>
+<Showcase>
+    <label>
+        Disabled  @controlName
+        <InputTextArea disabled @bind-Value="@text" />
+    </label>
+</Showcase>
+
+<h3>Placeholder</h3>
+<Showcase >
+    <label>
+        @controlName with a placeholder
+        <InputTextArea @bind-Value="@textPlaceholder" placeholder="Placeholder text" />
+    </label>
+</Showcase>
+
+<h3>Read Only</h3>
+<Showcase>
+    <label>
+        @controlName Read-only
+        <InputTextArea readonly @bind-Value="@text" />
+    </label>
+</Showcase>
+<h3>Invalied</h3>
+<Showcase >
+    <label>
+        Invalied  @controlName Blazor (class .invalid)
+        <InputTextArea class="invalid" @bind-Value="@textInvalid" />
+    </label>
+    <label>
+        Invalied  @controlName CSS :invalid
+        <textarea required />
+    </label>
+</Showcase>
+
+@code {
+    string text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.;";
+    string textInvalid;
+    string textPlaceholder;
+   
+}
+

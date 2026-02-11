@@ -1,0 +1,79 @@
+﻿@page "/inputselect"
+<h1>InputSelect</h1>
+
+<p>
+    <a href="https://web-components.fluentui.dev/?path=/docs/components-slider--docs" target="_blank">See on Web Components v3</a>
+</p>
+
+<Showcase>
+    <label>
+        Input Selcet
+        <InputSelect TValue="Actions" @bind-value="@_selectedAction">
+            @foreach (var color in Enum.GetValues(typeof(Actions)))
+            {
+                <option value="@color">@color</option>
+            }
+        </InputSelect>
+
+    </label>
+</Showcase>
+<h2>STORIES</h2>
+
+<h3>Default</h3>
+<Showcase>
+    <label>
+        Input Select
+        <InputSelect TValue="Actions" @bind-value="@_selectedAction">
+            @foreach (var color in Enum.GetValues(typeof(Actions)))
+            {
+                <option value="@color">@color</option>
+            }
+        </InputSelect>
+    </label>
+</Showcase>
+
+<h3>Without Label</h3>
+<Showcase>
+    <InputSelect TValue="Actions" @bind-value="@_selectedAction">
+        @foreach (var color in Enum.GetValues(typeof(Actions)))
+        {
+            <option value="@color">@color</option>
+        }
+    </InputSelect>
+</Showcase>
+
+<h3>Disabled</h3>
+<Showcase>
+    <label>
+        Disabled Input
+        <InputSelect disabled TValue="Actions" @bind-value="@_selectedAction">
+            @foreach (var color in Enum.GetValues(typeof(Actions)))
+            {
+                <option value="@color">@color</option>
+            }
+        </InputSelect>
+    </label>
+</Showcase>
+
+<h3>Placeholder</h3>
+<Showcase>
+    <label>
+        @{
+            Actions? action = null;
+        }
+        Input with a placeholder
+        <InputSelect TValue="Actions?" @bind-value="@action">
+            <option  value="" hidden selected>Select an Action</option>
+            @foreach (var color in Enum.GetValues(typeof(Actions)))
+            {
+                <option value="@color">@color</option>
+            }
+            
+        </InputSelect>
+    </label>
+</Showcase>
+
+@code {
+    enum Actions { Action1,Action2,Action3 }
+    Actions _selectedAction = Actions.Action1;
+}

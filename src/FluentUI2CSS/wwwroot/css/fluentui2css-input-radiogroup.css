@@ -1,0 +1,10 @@
+﻿.radiogroup {
+    display: flex;
+    gap: var(--spacingVerticalXL);
+    pointer-events: all;
+}
+
+.radiogroup--orientation-vertical {
+    flex-direction: column;
+    gap: var(--spacingHorizontalL);
+}

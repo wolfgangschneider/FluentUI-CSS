@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PackageId>FluentUI2CSS</PackageId>
+    <Version>2.0.0</Version>
+    <Authors>Your Name</Authors>
+    <Company>Your Company</Company>
+    <Description>Fluent UI styling with BEM methodology for Blazor applications</Description>
+    <PackageTags>blazor;fluentui;css;bem;razor</PackageTags>
+    <PackageProjectUrl>https://github.com/yourorg/FluentUI2CSS</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/yourorg/FluentUI2CSS</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  
+  </PropertyGroup>
+
+  <!-- Include migration files in package -->
+  <ItemGroup>
+    <None Include="MIGRATION-COPILOT-PROMPT.md" Pack="true" PackagePath="\" />
+    <None Include="MIGRATION.md" Pack="true" PackagePath="\" />
+    <None Include="NUGET-MIGRATION-GUIDE-DE.md" Pack="true" PackagePath="\" />
+    <None Include="migrate-to-v2.ps1" Pack="true" PackagePath="tools\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.3" />
+  </ItemGroup>
+
+</Project>

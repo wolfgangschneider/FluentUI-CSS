@@ -1,0 +1,289 @@
+
+/* http://danielstern.ca/range.css/#/ */
+input[type=range] {
+    width: 100%;
+    /* margin: 5.5px 0;*/
+    background-color: transparent;
+    -webkit-appearance: none;
+    --trackSizeSmall: 2px; /*but its 3 */
+    --thumbSizeSmall: 14px;
+    
+    --trackSizeMedium: 4px; /*but its 5 */
+    --thumbSizeMedium: 18px;
+    
+    --trackSizeLarge: 6px; 
+    --thumbSizeLarge: 22px;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+
+
+
+
+input[type=range]::-webkit-slider-runnable-track {
+    background: var(--colorBrandBackground);
+    border: 0;
+    outline: none;
+    width: 100%;
+    height: var(--trackSizeMedium);
+    cursor: pointer;
+    border-radius: var(--borderRadiusCircular);
+   
+}
+input[type=range].range--small::-webkit-slider-runnable-track {
+    height: var(--trackSizeSmall);
+}
+
+input[type=range].range--large::-webkit-slider-runnable-track {
+    height: var(--trackSizeLarge);
+}
+
+
+input[type=range]::-webkit-slider-thumb {
+    margin-top:  -6.5px;
+    width: var(--thumbSizeMedium);
+    height: var(--thumbSizeMedium);
+    background: var(--colorBrandBackground);
+    border: 4px solid var(--colorNeutralBackground1);
+    border-radius:  var(--borderRadiusCircular);
+    cursor: pointer;
+    -webkit-appearance: none;
+    outline: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+    outline-offset: 0px;
+    
+}
+input[type=range].range--small::-webkit-slider-thumb {
+    margin-top: -6px;
+    width: var(--thumbSizeSmall);
+    height: var(--thumbSizeSmall);
+    border: 3px solid var(--colorNeutralBackground1);
+}
+
+input[type=range].range--large::-webkit-slider-thumb {
+    margin-top: -7px;
+    width: var(--thumbSizeLarge);
+    height: var(--thumbSizeLarge);
+    border: 4px solid var(--colorNeutralBackground1);
+}
+
+input[type=range]:disabled::-webkit-slider-runnable-track,
+input[type=range]:disabled::-webkit-slider-thumb {
+    background: var(--colorNeutralForegroundDisabled);
+    outline-color: var(--colorNeutralForegroundDisabled);
+    cursor: default;
+}
+
+input[type=range]:hover:not(:disabled)::-webkit-slider-runnable-track,
+input[type=range]:hover:not(:disabled)::-webkit-slider-thumb {
+   
+    background: var(--colorBrandBackgroundHover);
+}
+
+input[type=range]:active:not(:disabled)::-webkit-slider-runnable-track,
+input[type=range]:active:not(:disabled)::-webkit-slider-thumb {
+ 
+    background: var(--colorBrandBackgroundPressed);
+}
+
+/*firefox*/
+input[type=range]::-moz-range-track {
+    background: var(--colorBrandBackground);
+    border: 0;
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    border-radius: 1000px;
+}
+
+input[type=range]::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: var(--colorBrandBackground);
+    border: 3px solid var(--colorNeutralBackground1);
+    border-radius: 16px;
+    cursor: pointer;
+    outline: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
+    outline-offset: 0px;
+}
+
+input[type=range]:disabled::-moz-range-track ,
+input[type=range]:disabled::-moz-range-thumb {
+    background: var(--colorNeutralForegroundDisabled);
+    outline-color: var(--colorNeutralForegroundDisabled);
+    cursor: default;
+}
+
+input[type=range]:hover:not(:disabled)::-moz-range-track ,
+input[type=range]:hover:not(:disabled)::-moz-range-thumb {
+   
+    background: var(--colorBrandBackgroundHover);
+}
+
+input[type=range]:active:not(:disabled)::-moz-range-track ,
+input[type=range]:active:not(:disabled)::-moz-range-thumb {
+ 
+    background: var(--colorBrandBackgroundPressed);
+}
+
+ 
+
+/*============== Vertikal =============================*/
+    /* Base vertical range styles */
+    input[type=range].range--vertical {
+        width: var(--thumbSizeMedium);
+        height: 100%;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        writing-mode: vertical-lr;
+        background-color: transparent;
+    }
+
+        input[type=range].range--vertical:focus {
+            outline: none;
+        }
+
+        /* ========== WebKit (Chrome, Safari, Edge) ========== */
+
+        /* Track - Medium (default) */
+        input[type=range].range--vertical::-webkit-slider-runnable-track {
+            background: var(--colorBrandBackground);
+            border: 0;
+            outline: none;
+            width: var(--trackSizeMedium);
+            height: 100%;
+            cursor: pointer;
+            border-radius: var(--borderRadiusCircular);
+        }
+
+        /* Track - Small */
+        input[type=range].range--vertical.range--vertical--small::-webkit-slider-runnable-track {
+            width: var(--trackSizeSmal);
+        }
+
+        /* Track - Large */
+        input[type=range].range--vertical.range--vertical--large::-webkit-slider-runnable-track {
+            width: var(--trackSizeLarge);
+        }
+
+        /* Thumb - Medium (default) */
+        input[type=range].range--vertical::-webkit-slider-thumb {
+            margin-left: -7px;
+            margin-top: 0;
+            width: var(--thumbSizeMedium);
+            height: var(--thumbSizeMedium);
+            background: var(--colorBrandBackground);
+            border: 4px solid var(--colorNeutralBackground1);
+            border-radius: var(--borderRadiusCircular);
+            cursor: pointer;
+            -webkit-appearance: none;
+            outline: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+            outline-offset: 0px;
+        }
+
+        /* Thumb - Small */
+        input[type=range].range--vertical.range--vertical--small::-webkit-slider-thumb {
+            margin-left: -6px;
+            width: var(--thumbSizeSaml);
+            height: var(--thumbSizeSaml);
+            border: 3px solid var(--colorNeutralBackground1);
+        }
+
+        /* Thumb - Large */
+        input[type=range].range--vertical.range--vertical--large::-webkit-slider-thumb {
+            margin-left: -8px;
+            width: var(--thumbSizeLarge);
+            height: var(--thumbSizeLarge);
+            border: 4px solid var(--colorNeutralBackground1);
+        }
+
+        /* Disabled state */
+        input[type=range].range--vertical:disabled::-webkit-slider-runnable-track,
+        input[type=range].range--vertical:disabled::-webkit-slider-thumb {
+            background: var(--colorNeutralForegroundDisabled);
+            outline-color: var(--colorNeutralForegroundDisabled);
+            cursor: default;
+        }
+
+        /* Hover state */
+        input[type=range].range--vertical:hover:not(:disabled)::-webkit-slider-runnable-track,
+        input[type=range].range--vertical:hover:not(:disabled)::-webkit-slider-thumb {
+            background: var(--colorBrandBackgroundHover);
+        }
+
+        /* Active state */
+        input[type=range].range--vertical:active:not(:disabled)::-webkit-slider-runnable-track,
+        input[type=range].range--vertical:active:not(:disabled)::-webkit-slider-thumb {
+            background: var(--colorBrandBackgroundPressed);
+        }
+
+        /* ========== Firefox ========== */
+
+        /* Track - Medium (default) */
+        input[type=range].range--vertical::-moz-range-track {
+            background: var(--colorBrandBackground);
+            border: 0;
+            width: var(--trackSizeMedium);
+            height: 100%;
+            cursor: pointer;
+            border-radius: var(--borderRadiusCircular);
+        }
+
+        /* Track - Small */
+        input[type=range].range--vertical.range--vertical--small::-moz-range-track {
+            width: var(--trackSizeSmal);
+        }
+
+        /* Track - Large */
+        input[type=range].range--vertical.range--vertical--large::-moz-range-track {
+            width: var(--trackSizeLarge);
+        }
+
+        /* Thumb - Medium (default) */
+        input[type=range].range--vertical::-moz-range-thumb {
+            width: var(--thumbSizeMedium);
+            height: var(--thumbSizeMedium);
+            background: var(--colorBrandBackground);
+            border: 4px solid var(--colorNeutralBackground1);
+            border-radius: var(--borderRadiusCircular);
+            cursor: pointer;
+            outline: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
+            outline-offset: 0px;
+        }
+
+        /* Thumb - Small */
+        input[type=range].range--vertical.range--vertical--small::-moz-range-thumb {
+            width: var(--thumbSizeSaml);
+            height: var(--thumbSizeSaml);
+            border: 3px solid var(--colorNeutralBackground1);
+        }
+
+        /* Thumb - Large */
+        input[type=range].range--vertical.range--vertical--large::-moz-range-thumb {
+            width: var(--thumbSizeLarge);
+            height: var(--thumbSizeLarge);
+            border: 4px solid var(--colorNeutralBackground1);
+        }
+
+        /* Disabled state */
+        input[type=range].range--vertical:disabled::-moz-range-track,
+        input[type=range].range--vertical:disabled::-moz-range-thumb {
+            background: var(--colorNeutralForegroundDisabled);
+            outline-color: var(--colorNeutralForegroundDisabled);
+            cursor: default;
+        }
+
+        /* Hover state */
+        input[type=range].range--vertical:hover:not(:disabled)::-moz-range-track,
+        input[type=range].range--vertical:hover:not(:disabled)::-moz-range-thumb {
+            background: var(--colorBrandBackgroundHover);
+        }
+
+        /* Active state */
+        input[type=range].range--vertical:active:not(:disabled)::-moz-range-track,
+        input[type=range].range--vertical:active:not(:disabled)::-moz-range-thumb {
+            background: var(--colorBrandBackgroundPressed);
+        }

@@ -1,0 +1,73 @@
+﻿@page "/inputDate"
+<h1>InputText</h1>
+
+<Showcase>
+    <label>
+        Input Label
+        <InputDate @bind-Value="@dateTime" />
+    </label>
+</Showcase>
+<h2>STORIES</h2>
+
+<h3>Default</h3>
+<Showcase>
+    <label>
+        Input Label
+        <InputDate @bind-Value="@dateTime" />
+    </label>
+</Showcase>
+
+<h3>Without Label</h3>
+<Showcase>
+    <InputDate style=" max-width: 400px;" @bind-Value="@dateTime" />
+</Showcase>
+
+<h3>Disabled</h3>
+<Showcase>
+    <label>
+        Disabled Input
+        <InputDate disabled @bind-Value="@dateTime" />
+    </label>
+</Showcase>
+
+
+
+<h3>Read Only</h3>
+<Showcase>
+    <label>
+        Read-only value
+        <InputDate readonly @bind-Value="@dateTime"  />
+    </label>
+</Showcase>
+<h3>Invalied (Blazor like)</h3>
+<Showcase>
+    <label>
+        In Blazor the class .invalid will add to the input html element
+        <InputDate class="invalid" @bind-Value="@dateTime" />
+    </label>
+</Showcase>
+<h3>Inline</h3>
+<Showcase>
+ 
+        The quick brown
+    <InputDate style="display:inline-flex"  @bind-Value="@dateTimeLine1" placeholder="noun" />
+        jumped over the
+    <InputDate style="display:inline-flex" @bind-Value="@dateTimeLine1" placeholder="adjective" />
+        dog.
+        
+    
+   
+</Showcase>
+@code {
+    DateTime dateTime = DateTime.Now;
+    DateTime dateTimeLine1;
+    DateTime dateTimeLine2;
+    DateTime? dateTimePlaceholder = null;
+
+    TimeOnly? timeOnly = new TimeOnly(12,10);
+    TimeOnly timeOnlyLine1;
+    TimeOnly timeOnlyLine2;
+    TimeOnly? timeOnlyPlaceholder = null;
+
+    DateTimeOffset dto = new DateTimeOffset(DateTime.Now);
+}
