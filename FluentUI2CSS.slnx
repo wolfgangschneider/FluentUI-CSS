@@ -6,6 +6,9 @@
     <Project Path="tests/FluentUI2-CSS-Blazor/FluentUI2-CSS-Blazor.csproj" />
     <Project Path="tests/FluentUI2-CSS-BlazorWASM/FluentUI2-CSS-BlazorWASM.csproj" />
     <Project Path="tests/FluentUI2-CSS-RazorClassLibrary/FluentUI2-CSS-RazorClassLibrary.csproj" />
-    <Project Path="tests/FluentUI2-CSS-Scripts/FluentUI2-CSS-Scripts.esproj" />
+    <Project Path="tests/FluentUI2-CSS-Scripts/FluentUI2-CSS-Scripts.esproj">
+      <Build />
+      <Deploy />
+    </Project>
   </Folder>
 </Solution>
