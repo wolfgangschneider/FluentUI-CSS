@@ -1,39 +1,111 @@
-.tablist {
+.vtablist {
     display: flex;
     flex-direction: row;
     gap: var(--spacingHorizontalL);
 
     input[type=radio] {
-        visibility: hidden;
-        margin: 0 !important;
-        width: 0 !important;
+        appearance: none;
+        -webkit-appearance: none;
+        margin: 0;
+        width: 0;
+        height: 0;
         border: 0;
+        position: absolute;
+
+        &::after {
+            display: none;
+        }
     }
 
     label {
         cursor: pointer;
-        padding: 6px 0;
-        border-top: 0;
-        border-left: 0;
-        border-right: 0;
-        border-bottom: 3px;
-        border-style: solid;
-        border-color: transparent;
+        padding: var(--spacingVerticalS) 0;
+        border-bottom: var(--strokeWidthThicker) solid transparent;
+    
         background-color: transparent;
-        color: var(--colorNeutralForeground1Selected, black);
+        color: var(--colorNeutralForeground2);
+        font-size: var(--fontSizeBase300);
+        font-weight: var(--fontWeightRegular);
+        transition: color 0.1s ease, border-color 0.1s ease;
 
         &:has(input[type=radio]:checked) {
+            color: var(--colorNeutralForeground1);
             font-weight: var(--fontWeightSemibold);
-            border-bottom-color: var(--colorBrandBackground, #1b6ec2);
+            border-bottom-color: var(--colorBrandStroke1);
         }
 
-        &:has(input[type=radio]:hover) {
-            border-bottom-color: var(--colorNeutralStroke1Hover, #1b6ec2);
+        &:hover {
+            color: var(--colorNeutralForeground1);
+            border-bottom-color: var(--colorNeutralStroke1Hover);
+        }
+
+        &:has(input[type=radio]:checked):hover {
+            border-bottom-color: var(--colorBrandStroke1);
         }
 
         &:has(input[type=radio]:disabled) {
+            color: var(--colorNeutralForegroundDisabled);
             pointer-events: none;
-            cursor: not-allowed;
+        }
+
+        &:has(input[type=radio]:disabled:checked) {
+            border-bottom-color: var(--colorNeutralStrokeDisabled);
+        }
+    }
+}
+
+/* Horizontal tablist — tabs stacked in a column, indicator on left */
+.htablist {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacingVerticalXS);
+
+    input[type=radio] {
+        appearance: none;
+        -webkit-appearance: none;
+        margin: 0;
+        width: 0;
+        height: 0;
+        border: 0;
+        position: absolute;
+
+        &::after {
+            display: none;
+        }
+    }
+
+    label {
+        cursor: pointer;
+        padding: 0 var(--spacingHorizontalM);
+        border-left: var(--strokeWidthThicker) solid transparent;
+        background-color: transparent;
+        color: var(--colorNeutralForeground2);
+        font-size: var(--fontSizeBase300);
+        font-weight: var(--fontWeightRegular);
+        transition: color 0.1s ease, border-color 0.1s ease;
+
+        &:has(input[type=radio]:checked) {
+            color: var(--colorNeutralForeground1);
+            font-weight: var(--fontWeightSemibold);
+            border-left-color: var(--colorBrandStroke1);
+        }
+
+        &:hover {
+            color: var(--colorNeutralForeground1);
+            border-left-color: var(--colorNeutralStroke1Hover);
+        }
+
+        &:has(input[type=radio]:checked):hover {
+            border-left-color: var(--colorBrandStroke1);
+        }
+
+        &:has(input[type=radio]:disabled) {
+            color: var(--colorNeutralForegroundDisabled);
+            pointer-events: none;
+        }
+
+        &:has(input[type=radio]:disabled:checked) {
+            border-left-color: var(--colorNeutralStrokeDisabled);
         }
     }
 }

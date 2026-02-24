@@ -39,17 +39,23 @@
 
 
 
-<h3>Invalied</h3>
-<div >
+<h3>Invalid</h3>
+<Showcase>
     <label>
-         <input type="radio" class="invalid"  />
-        Invalied  @controlName Blazor (class .invalid)
+        <input type="radio" class="invalid" />
+        Invalid @controlName Blazor (class .invalid)
     </label>
     <label>
-        <input  type="radio" required />
-        Invalied  @controlName CSS :invalid
+        <input type="radio" aria-invalid="true" />
+        Invalid @controlName (aria-invalid)
     </label>
-</div>
+    <form>
+        <label>
+            <input type="radio" name="invalidDemo" required />
+            Invalid @controlName CSS :invalid (required in form)
+        </label>
+    </form>
+</Showcase>
 
 @code {
     bool value;

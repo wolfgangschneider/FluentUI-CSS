@@ -1,0 +1,87 @@
+﻿/* iOS-style toggle switch */
+.switch {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    gap: var(--spacingHorizontalS);
+}
+
+/* Hide the native checkbox */
+.switch input[type="checkbox"] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+/* Track (pill background) — height matches radio --size (16px), width 2× */
+.switch .track {
+    display: inline-block;
+    position: relative;
+    width: 32px;
+    height: 16px;
+    background-color: var(--colorNeutralBackground1);
+    border: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
+    border-radius: var(--borderRadiusCircular);
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+/* Thumb — 12px circle with 2px inset */
+.switch .thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 12px;
+    height: 12px;
+    background-color: var(--colorNeutralStrokeAccessible);
+    border-radius: var(--borderRadiusCircular);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+/* Checked state: brand track */
+.switch input[type="checkbox"]:checked + .track {
+    background-color: var(--colorBrandBackground);
+    border-color: var(--colorBrandBackground);
+}
+
+/* Checked state: white thumb + slide right */
+.switch input[type="checkbox"]:checked + .track .thumb {
+    background-color: var(--colorNeutralBackground1);
+    transform: translateX(16px);
+}
+
+/* Hover */
+.switch:not(.invalid):hover input[type="checkbox"]:not(:disabled):not(:checked):not(.invalid):not(:invalid) + .track {
+    border-color: var(--colorNeutralStrokeAccessibleHover);
+}
+
+.switch:not(.invalid):hover input[type="checkbox"]:not(:disabled):checked:not(.invalid):not(:invalid) + .track {
+    background-color: var(--colorBrandBackgroundHover);
+    border-color: var(--colorBrandBackgroundHover);
+}
+
+/* Pressed */
+.switch:active input[type="checkbox"]:not(:disabled):checked + .track {
+    background-color: var(--colorBrandBackgroundPressed);
+    border-color: var(--colorBrandBackgroundPressed);
+}
+
+/* Invalid state — for blazor .invalid and css :invalid */
+.switch.invalid .track,
+.switch input[type="checkbox"].invalid + .track,
+.switch input[type="checkbox"]:invalid + .track {
+    border-color: var(--colorPaletteRedBorder2);
+}
+
+/* Disabled state */
+.switch input[type="checkbox"]:disabled + .track {
+    background-color: var(--colorNeutralBackgroundDisabled);
+    border-color: var(--colorNeutralStrokeDisabled);
+    pointer-events: none;
+}
+
+.switch input[type="checkbox"]:disabled + .track .thumb {
+    background-color: var(--colorNeutralForegroundDisabled);
+}

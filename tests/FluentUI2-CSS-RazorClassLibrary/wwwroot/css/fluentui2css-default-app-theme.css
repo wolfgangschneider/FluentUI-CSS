@@ -436,3 +436,39 @@
     --shadow28Brand: 0 0 8px rgba(0, 0, 0, 0.30), 0 14px 28px rgba(0, 0, 0, 0.25);
     --shadow64Brand: 0 0 8px rgba(0, 0, 0, 0.30), 0 32px 64px rgba(0, 0, 0, 0.25);
 }
+
+/* ── iOS-style Toggle Switch ─────────────────────────────────────────────── */
+.switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Hide checkbox visually, keep it keyboard-accessible */
+.switch input[type="checkbox"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Pill-shaped track */
+.track {
+    position: relative;
+    display: inline-block;
+    width: 51px;
+    height: 31px;
+    background-color: var(--colorNeutralStrokeAccessible);
+    border-radius: 16px;
+    transition: background-color var(--durationNormal) var(--curveEasyEase);
+    flex-shrink: 0;
+}
+

@@ -1,0 +1,83 @@
+﻿@page "/switch"
+@{
+    string controlName = "InputCheckbox";
+}
+<h1>@controlName</h1>
+
+<p>
+    <a href="https://web-components.fluentui.dev/?path=/docs/components-checkbox--docs" target="_blank">See on Web Components v3</a>
+</p>
+<Showcase>
+    <label class="switch">
+        <InputCheckbox  @bind-Value="@value" />
+        <span class="track">
+            <span class="thumb"></span>
+        </span>
+    </label>
+</Showcase>
+<h2>STORIES</h2>
+
+<h3>Default</h3>
+<Showcase>
+    
+    <label class="switch">
+        <InputCheckbox  @bind-Value="@value" />
+        <span class="track">
+            <span class="thumb"></span>
+        </span>
+        @controlName
+    </label>
+</Showcase>
+
+<h3>Without label</h3>
+<Showcase>
+    <label class="switch">
+        <InputCheckbox  @bind-Value="@value" />
+        <span class="track">
+            <span class="thumb"></span>
+        </span>
+    </label>
+
+</Showcase>
+
+<h3>Disabled</h3>
+<Showcase>
+    <label class="switch">
+        <InputCheckbox disabled  @bind-Value="@value" />
+        <span class="track">
+            <span class="thumb"></span>
+        </span>
+        Disabled  @controlName
+    </label>
+
+    
+</Showcase>
+
+
+
+<h3>Invalied</h3>
+<Showcase>
+    <label class="switch">
+        <InputCheckbox class="invalid" @bind-Value="@value" />
+        <span class="track">
+            <span class="thumb"></span>
+        </span>
+        Invalied  @controlName Blazor (class .invalid)
+    </label>
+
+ 
+    <label class="switch">
+        <input type="checkbox" required />
+        <span class="track">
+            <span class="thumb"></span>
+        </span>
+        Invalied  @controlName CSS :invalid
+    </label>
+</Showcase>
+
+@code {
+    bool value;
+   
+
+}
+

@@ -5,24 +5,56 @@
 <h1>@controlName</h1>
 
 <p>
-    <a href="https://web-components.fluentui.dev/?path=/docs/components-tabs--docs" target="_blank">See on Web Components v3</a>
+    <a href="https://storybooks.fluentui.dev/web-components/?path=/docs/components-tablist--docs" target="_blank">See on Web Components v3</a>
 </p>
 
 <h3>TabList</h3>
 
-
 <Showcase>
+    <span class="vtablist">
+        <InputRadioGroup @bind-Value="@value1">
+            @foreach (var fruit in Enum.GetValues(typeof(Fruits)))
+            {
+                <label><InputRadio value="@((int)@fruit)" />@fruit</label>
+            }
+        </InputRadioGroup>
+    </span>
+</Showcase>
 
-    <span class="tablist">
-            <InputRadioGroup  @bind-Value="@value1">
-                @foreach (var fruit in Enum.GetValues(typeof(Fruits)))
-                {
-                    <label><InputRadio  value="@((int)@fruit)"/>@fruit</label>
-                }
-            </InputRadioGroup>
-        </span>
+<h3>Disabled</h3>
+<Showcase>
+    <span class="vtablist">
+        <InputRadioGroup Name="tablist-disabled" disabled @bind-Value="@value1">
+            @foreach (var fruit in Enum.GetValues(typeof(Fruits)))
+            {
+                <label><InputRadio disabled value="@((int)@fruit)" />@fruit</label>
+            }
+        </InputRadioGroup>
+    </span>
+</Showcase>
 
-   
+<h3>HTabList</h3>
+<Showcase>
+    <span class="htablist">
+        <InputRadioGroup Name="htablist" @bind-Value="@value2">
+            @foreach (var fruit in Enum.GetValues(typeof(Fruits)))
+            {
+                <label><InputRadio value="@((int)@fruit)" />@fruit</label>
+            }
+        </InputRadioGroup>
+    </span>
+</Showcase>
+
+<h3>HTabList Disabled</h3>
+<Showcase>
+    <span class="htablist">
+        <InputRadioGroup Name="htablist-disabled" disabled @bind-Value="@value2">
+            @foreach (var fruit in Enum.GetValues(typeof(Fruits)))
+            {
+                <label><InputRadio disabled value="@((int)@fruit)" />@fruit</label>
+            }
+        </InputRadioGroup>
+    </span>
 </Showcase>
 @* 
 <h2>STORIES</h2>
@@ -95,7 +127,7 @@
 
     enum Fruits { Apple,Pear,Banana,Orange  }
     Fruits? _selectedFruits = null;
-    int? value1;
+    int? value1 = 0;
     int? value2;
     int? value3;
     int? value4;

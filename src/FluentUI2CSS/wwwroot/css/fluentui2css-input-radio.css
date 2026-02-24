@@ -55,6 +55,7 @@
     }
 
     &.invalid,
+    &[aria-invalid="true"],
     &:invalid {
         border: var(--strokeWidthThin) solid var(--colorPaletteRedBorder2);
 
