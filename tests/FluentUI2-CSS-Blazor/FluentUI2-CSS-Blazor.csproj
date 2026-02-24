@@ -21,6 +21,14 @@
 
     </PropertyGroup>
 
+    <ItemGroup>
+      <Compile Remove="Properties\PublishProfiles\**" />
+      <Content Remove="Properties\PublishProfiles\**" />
+      <EmbeddedResource Remove="Properties\PublishProfiles\**" />
+      <None Remove="Properties\PublishProfiles\**" />
+      <_WebToolingArtifacts Remove="Properties\PublishProfiles\**" />
+    </ItemGroup>
+
 
     <ItemGroup>
     <ProjectReference Include="..\FluentUI2-CSS-RazorClassLibrary\FluentUI2-CSS-RazorClassLibrary.csproj" />
@@ -31,7 +39,6 @@
 
   <ItemGroup>
     <Folder Include="Components\Layout\" />
-    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="wwwroot\js\" />
   </ItemGroup>
 

@@ -17,12 +17,6 @@
   </PropertyGroup>
 
   <!-- Include migration files in package -->
-  <ItemGroup>
-    <None Include="MIGRATION-COPILOT-PROMPT.md" Pack="true" PackagePath="\" />
-    <None Include="MIGRATION.md" Pack="true" PackagePath="\" />
-    <None Include="NUGET-MIGRATION-GUIDE-DE.md" Pack="true" PackagePath="\" />
-    <None Include="migrate-to-v2.ps1" Pack="true" PackagePath="tools\" />
-  </ItemGroup>
 
   <ItemGroup>
     <SupportedPlatform Include="browser" />
