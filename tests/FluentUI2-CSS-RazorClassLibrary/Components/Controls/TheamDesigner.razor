@@ -48,8 +48,8 @@
             <div class="paceholder">
                 fui-personal is no native blazor/html component
             </div>
-            <span class="tablist">
-                <InputRadioGroup  @bind-Value="@valueTabPage">
+            <span class="vtablist">
+                <InputRadioGroup   @bind-Value="@valueTabPage">
 
                     <label><InputRadio  value="1"/>Home</label>
                     <label><InputRadio  value="2"/>Pages</label>
@@ -69,8 +69,23 @@
         <div style="grid-column:2; display:grid;grid-template-rows: auto auto; grid-template-columns: 1fr 1fr; grid-gap:5px">
 
             <button style="width:70px; height:20px" class="button--appearance-primary">Text</button>
-            <div class="paceholder" style="grid-column:2; grid-row:1 ">
-                switch is no native blazor/html component
+            <div >
+                <label class="switch">
+	                <input type="checkbox" checked name="value" class value="True" >
+                    <span class="track">
+		                <span class="thumb">
+		                </span>
+	                </span>
+                    On
+                </label>
+                <label class="switch">
+	                <input type="checkbox" name="value" class value="True" >
+                    <span class="track">
+		                <span class="thumb">
+		                </span>
+	                </span>
+                    Off
+                </label>
             </div>
             <input  type="range"  style="grid-column:1 / span 2" />
             <label>
