@@ -5,83 +5,99 @@
     align-items: center;
     cursor: pointer;
     gap: var(--spacingHorizontalS);
-}
 
-/* Hide the native checkbox */
-.switch input[type="checkbox"] {
-    opacity: 0;
-    width: 0;
-    height: 0;
-    position: absolute;
-}
+    /* Hide the native checkbox */
+    input[type="checkbox"] {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        position: absolute;
 
-/* Track (pill background) — height matches radio --size (16px), width 2× */
-.switch .track {
-    display: inline-block;
-    position: relative;
-    width: 32px;
-    height: 16px;
-    background-color: var(--colorNeutralBackground1);
-    border: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
-    border-radius: var(--borderRadiusCircular);
-    transition: background-color 0.25s ease, border-color 0.25s ease;
-}
+        /* Checked state: brand track */
+        &:checked + .track {
+            background-color: var(--colorBrandBackground);
+            border-color: var(--colorBrandBackground);
+        }
 
-/* Thumb — 12px circle with 2px inset */
-.switch .thumb {
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 12px;
-    height: 12px;
-    background-color: var(--colorNeutralStrokeAccessible);
-    border-radius: var(--borderRadiusCircular);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-    transition: transform 0.25s ease, background-color 0.25s ease;
-}
+        /* Checked state: white thumb + slide right */
+        &:checked + .track .thumb {
+            background-color: var(--colorNeutralBackground1);
+            transform: translateX(16px) translateY(-50%);
+        }
 
-/* Checked state: brand track */
-.switch input[type="checkbox"]:checked + .track {
-    background-color: var(--colorBrandBackground);
-    border-color: var(--colorBrandBackground);
-}
+        /* Disabled state */
+        &:disabled + .track {
+            background-color: var(--colorNeutralBackgroundDisabled);
+            border-color: var(--colorNeutralStrokeDisabled);
+        }
 
-/* Checked state: white thumb + slide right */
-.switch input[type="checkbox"]:checked + .track .thumb {
-    background-color: var(--colorNeutralBackground1);
-    transform: translateX(16px);
-}
+        &:disabled + .track .thumb {
+            background-color: var(--colorNeutralForegroundDisabled);
+        }
+    }
 
-/* Hover */
-.switch:not(.invalid):hover input[type="checkbox"]:not(:disabled):not(:checked):not(.invalid):not(:invalid) + .track {
-    border-color: var(--colorNeutralStrokeAccessibleHover);
-}
+    /* Track (pill background) — height matches radio --size (16px), width 2× */
+    .track {
+        display: inline-block;
+        position: relative;
+        width: 32px;
+        height: 16px;
+        background-color: var(--colorNeutralBackground1);
+        border: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
+        border-radius: var(--borderRadiusCircular);
+        transition: background-color 0.25s ease, border-color 0.25s ease;
+    }
 
-.switch:not(.invalid):hover input[type="checkbox"]:not(:disabled):checked:not(.invalid):not(:invalid) + .track {
-    background-color: var(--colorBrandBackgroundHover);
-    border-color: var(--colorBrandBackgroundHover);
-}
+    /* Thumb — 12px circle, vertically centered */
+    .thumb {
+        position: absolute;
+        top: 50%;
+        left: 2px;
+        width: 12px;
+        height: 12px;
+        background-color: var(--colorNeutralStrokeAccessible);
+        border-radius: var(--borderRadiusCircular);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        transform: translateY(-50%);
+        transition: transform 0.25s ease, background-color 0.25s ease;
+    }
 
-/* Pressed */
-.switch:active input[type="checkbox"]:not(:disabled):checked + .track {
-    background-color: var(--colorBrandBackgroundPressed);
-    border-color: var(--colorBrandBackgroundPressed);
-}
+    /* Hover */
+    &:not(.invalid):hover input[type="checkbox"]:not(:disabled):not(:checked):not(.invalid):not(:invalid) + .track {
+        border-color: var(--colorNeutralStrokeAccessibleHover);
+    }
 
-/* Invalid state — for blazor .invalid and css :invalid */
-.switch.invalid .track,
-.switch input[type="checkbox"].invalid + .track,
-.switch input[type="checkbox"]:invalid + .track {
-    border-color: var(--colorPaletteRedBorder2);
-}
+    &:not(.invalid):hover input[type="checkbox"]:not(:disabled):checked:not(.invalid):not(:invalid) + .track {
+        background-color: var(--colorBrandBackgroundHover);
+        border-color: var(--colorBrandBackgroundHover);
+    }
 
-/* Disabled state */
-.switch input[type="checkbox"]:disabled + .track {
-    background-color: var(--colorNeutralBackgroundDisabled);
-    border-color: var(--colorNeutralStrokeDisabled);
-    pointer-events: none;
-}
+    /* Pressed — unchecked */
+    &:active input[type="checkbox"]:not(:disabled):not(:checked) + .track {
+        border-color: var(--colorNeutralStrokeAccessiblePressed);
+    }
 
-.switch input[type="checkbox"]:disabled + .track .thumb {
-    background-color: var(--colorNeutralForegroundDisabled);
+    /* Pressed — checked */
+    &:active input[type="checkbox"]:not(:disabled):checked + .track {
+        background-color: var(--colorBrandBackgroundPressed);
+        border-color: var(--colorBrandBackgroundPressed);
+    }
+
+    /* Focus visible — keyboard navigation */
+    input[type="checkbox"]:focus-visible + .track {
+        outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+        outline-offset: 2px;
+    }
+
+    /* Disabled state */
+    &:has(input[type="checkbox"]:disabled) {
+        pointer-events: none;
+    }
+
+    /* Invalid state — for blazor .invalid and css :invalid */
+    &.invalid .track,
+    input[type="checkbox"].invalid + .track,
+    input[type="checkbox"]:invalid + .track {
+        border-color: var(--colorPaletteRedBorder2);
+    }
 }

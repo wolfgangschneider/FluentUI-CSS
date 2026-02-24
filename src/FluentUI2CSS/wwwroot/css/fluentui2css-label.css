@@ -1,112 +1,111 @@
 ﻿label {
     color: var(--colorNeutralForeground1);
-/*    cursor: pointer;*/
     font-family: var(--fontFamilyBase);
     font-size: var(--fontSizeBase300);
     font-weight: var(--fontWeightRegular);
     line-height: var(--lineHeightBase300);
     user-select: none;
     white-space: nowrap;
-}
 
-.label--size-small {
-    font-size: var(--fontSizeBase200);
-    line-height: var(--lineHeightBase200);
-}
-
-.label--size-medium {
-}
-
-.label--size-large {
-    font-size: var(--fontSizeBase400);
-    line-height: var(--lineHeightBase400);
-    font-weight: var(--fontWeightSemibold);
-}
-
-.label--weight-regular {
-}
-
-.label--weight-semibold {
-    font-weight: var(--fontWeightSemibold);
-}
-
-/* Labels with inputs */
-label:has(input) {
-    cursor: pointer;
-
-    &:has(input:disabled),
-    &:has(select:disabled) {
-        color: var(--colorNeutralForegroundDisabled);
-        cursor: default;
+    /* Size variants */
+    &.label--size-small {
+        font-size: var(--fontSizeBase200);
+        line-height: var(--lineHeightBase200);
     }
 
-    &:has(input[type="radio"]),
-    &:has(input[type="checkbox"]) {
+    &.label--size-large {
+        font-size: var(--fontSizeBase400);
+        line-height: var(--lineHeightBase400);
+        font-weight: var(--fontWeightSemibold);
+    }
+
+    /* Weight variants */
+    &.label--weight-semibold {
+        font-weight: var(--fontWeightSemibold);
+    }
+
+    /* Labels with inputs */
+    &:has(input) {
+        cursor: pointer;
+
+        &:has(input:disabled),
+        &:has(select:disabled) {
+            color: var(--colorNeutralForegroundDisabled);
+            cursor: default;
+        }
+
+        &:has(input[type="radio"]),
+        &:has(input[type="checkbox"]) {
+            display: flex;
+            align-items: center;
+        }
+
+        &:has(input:not([type="checkbox"]):not([type="radio"])),
+        &:has(select),
+        &:has(textarea),
+        &:has(span.radiogroup) {
+            display: flex;
+            align-items: baseline;
+            flex-direction: column;
+        }
+
+        &:has(span.radiogroup) {
+            cursor: default;
+            pointer-events: none;
+        }
+    }
+
+    /* Child input spacing */
+    & > input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+    & > select,
+    & > textarea {
+        margin-top: var(--spacingVerticalXS);
+    }
+
+    & > input[type="range"] {
+        margin-top: var(--spacingVerticalS);
+    }
+
+    & > input[type="checkbox"],
+    & > input[type="radio"] {
+        margin-right: var(--spacingHorizontalM);
+        margin-left: 0;
+    }
+
+    /* Left position */
+    &:has(input:not([type="checkbox"]):not([type="radio"])).label--position-left,
+    &:has(select).label--position-left,
+    &:has(textarea).label--position-left,
+    &:has(span.radiogroup).label--position-left {
         display: flex;
+        flex-direction: row;
         align-items: center;
+
+        &:has(span.radiogroup) > .radiogroup {
+            margin-left: var(--spacingHorizontalM);
+        }
+
+        &:has(textarea) {
+            align-items: start;
+        }
     }
 
-    &:has(input:not([type="checkbox"]):not([type="radio"])),
-    &:has(select),
-    &:has(textarea),
-    &:has(span.radiogroup) {
-        display: flex;
-        align-items: baseline;
-        flex-direction: column;
+    &.label--position-left > input:not([type="checkbox"]):not([type="radio"]),
+    &.label--position-left > select,
+    &.label--position-left > textarea {
+        margin-top: initial;
+        margin-left: var(--spacingHorizontalM);
     }
 
-    &:has(span.radiogroup) {
-        cursor: default;
-        pointer-events: none;
+    &.label--position-left > input[type="checkbox"],
+    &.label--position-left > input[type="radio"] {
+        margin-left: var(--spacingHorizontalM);
+        margin-right: inherit;
+        margin-top: inherit;
     }
 }
-/* Modify inputs with default label */
-label > input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
-label > select,
-label > textarea {
-    margin-top: var(--spacingVerticalXS);
-}
 
-label > input[type="range"] {
-    margin-top: var(--spacingVerticalS);
-}
-
-label > input[type="checkbox"],
-label > input[type="radio"],
 .radiogroup > input[type="radio"] {
-    margin-right: var(--spacingVerticalM);
+    margin-right: var(--spacingHorizontalM);
     margin-left: 0;
-}
-
-/* Left position */
-label:has(input:not([type="checkbox"]):not([type="radio"])).label--position-left,
-label:has(select).label--position-left,
-label:has(textarea).label--position-left,
-label:has(span.radiogroup).label--position-left {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    &:has(span.radiogroup) > .radiogroup {
-        margin-left: var(--spacingVerticalM);
-    }
-
-    &:has(textarea) {
-        align-items: start;
-    }
-}
-
-/* Modify inputs with label left */
-label.label--position-left > input:not([type="checkbox"]):not([type="radio"]),
-label.label--position-left > select,
-label.label--position-left > textarea {
-    margin-top: initial;
-    margin-left: var(--spacingVerticalM);
-}
-
-label.label--position-left > input[type="checkbox"],
-label.label--position-left > input[type="radio"] {
-    margin-left: var(--spacingVerticalM);
-    margin-right: inherit;
-    margin-top: inherit;
 }
