@@ -32,17 +32,20 @@
         color: var(--colorNeutralForeground1Hover);
         border-color: var(--colorNeutralStroke1Hover);
     }
-    &:hover:active {
-        background-color: var(--colorNeutralBackground1Pressed);
-        border-color: var(--colorNeutralStroke1Pressed);
-        color: var(--colorNeutralForeground1Pressed);
-        outline-style: none;
-    }
+
+        &:hover:active {
+            background-color: var(--colorNeutralBackground1Pressed);
+            border-color: var(--colorNeutralStroke1Pressed);
+            color: var(--colorNeutralForegroundOnBrand);
+            outline-style: none;
+        }
+
     &:focus-visible {
         border-color: var(--colorTransparentStroke);
         outline: var(--strokeWidthThick) solid var(--colorTransparentStroke);
         box-shadow: var(--shadow4), 0 0 0 2px var(--colorStrokeFocus2);
     }
+
     &:disabled,
     &:disabled:hover {
         background-color: var(--colorNeutralBackgroundDisabled);
