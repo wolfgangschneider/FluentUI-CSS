@@ -1,0 +1,45 @@
+/* Mirrors Microsoft Fluent UI Blazor default-fuib.css (body typography and headings only). */
+
+body {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    line-height: var(--lineHeightBase300);
+    font-weight: var(--fontWeightRegular);
+    color: var(--colorNeutralForeground1);
+    background-color: var(--colorNeutralBackground1);
+}
+
+h6, h5, h4, h3, h2, h1 {
+    margin-top: 0;
+    font-weight: var(--fontWeightMedium);
+}
+
+h1 {
+    font-size: var(--fontSizeHero900);
+    line-height: var(--lineHeightHero900);
+}
+
+h2 {
+    font-size: var(--fontSizeHero800);
+    line-height: var(--lineHeightHero800);
+}
+
+h3 {
+    font-size: var(--fontSizeHero700);
+    line-height: var(--lineHeightHero700);
+}
+
+h4 {
+    font-size: var(--fontSizeBase600);
+    line-height: var(--lineHeightBase600);
+}
+
+h5 {
+    font-size: var(--fontSizeBase500);
+    line-height: var(--lineHeightBase500);
+}
+
+h6 {
+    font-size: var(--fontSizeBase400);
+    line-height: var(--lineHeightBase400);
+}

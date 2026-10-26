@@ -46,11 +46,3 @@ textarea {
         outline: none;
     }
 }
-
-@media (max-width: 576px) {
-    input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
-    textarea,
-    select {
-        padding: 0 var(--spacingHorizontalXS);
-    }
-}
