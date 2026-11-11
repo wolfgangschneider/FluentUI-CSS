@@ -8,80 +8,66 @@
     <a href="https://web-components.fluentui.dev/?path=/docs/components-radiogroup--docs" target="_blank">See on Web Components v3</a>
 </p>
 <Showcase>
-    <label>
-        @controlName 
-        <span class="radiogroup">
+    <fieldset>
+        <legend>@controlName</legend>
         <InputRadioGroup @bind-Value="@value1">
             @foreach (var fruit in Enum.GetValues(typeof(Fruits)))
             {
-                <label><InputRadio value="@((int)@fruit)"/>@fruit</label>
+                <label><InputRadio value="@((int)@fruit)" />@fruit</label>
             }
         </InputRadioGroup>
-        </span>
-
-    </label>
+    </fieldset>
 </Showcase>
 <h2>STORIES</h2>
 
 <h3>Default</h3>
 <Showcase>
-   <label>
-        @controlName 
-        <span class="radiogroup">
-        <InputRadioGroup  @bind-Value="@value2">
+    <fieldset>
+        <legend>@controlName</legend>
+        <InputRadioGroup @bind-Value="@value2">
             @foreach (var fruit in Enum.GetValues(typeof(Fruits)))
             {
-                    <label><InputRadio value="@((int)@fruit)" />@fruit</label>
+                <label><InputRadio value="@((int)@fruit)" />@fruit</label>
             }
         </InputRadioGroup>
-        </span>
-
-    </label>
+    </fieldset>
 </Showcase>
 <h3>Vertical</h3>
 <Showcase>
-   <label>
-        @controlName Verical
-        <span class="radiogroup radiogroup--orientation-vertical">
-        <InputRadioGroup  @bind-Value="@value3">
+    <fieldset class="radiogroup--orientation-vertical">
+        <legend>@controlName Vertical</legend>
+        <InputRadioGroup @bind-Value="@value3">
             @foreach (var fruit in Enum.GetValues(typeof(Fruits)))
             {
-                    <label><InputRadio value="@((int)@fruit)" />@fruit</label>
+                <label><InputRadio value="@((int)@fruit)" />@fruit</label>
             }
         </InputRadioGroup>
-        </span>
-
-    </label>
+    </fieldset>
 </Showcase>
 
 <h3>Without label</h3>
 <Showcase>
-    <span class="radiogroup"
-   
-        <InputRadioGroup  @bind-Value="@value4">
+    <fieldset>
+        <InputRadioGroup @bind-Value="@value4">
             @foreach (var fruit in Enum.GetValues(typeof(Fruits)))
             {
-                   <label><InputRadio value="@((int)@fruit)"/>@fruit</label>
+                <label><InputRadio value="@((int)@fruit)" />@fruit</label>
             }
         </InputRadioGroup>
-  
-    </span>
+    </fieldset>
 </Showcase>
 
 <h3>Disabled</h3>
 <Showcase>
-   <label>
-        @controlName  disabled
-        <span class="radiogroup">
-        <InputRadioGroup disabled @bind-Value="@value5">
+    <fieldset disabled>
+        <legend>@controlName disabled</legend>
+        <InputRadioGroup @bind-Value="@value5">
             @foreach (var fruit in Enum.GetValues(typeof(Fruits)))
             {
-                    <label><InputRadio disabled value="@((int)@fruit)" />@fruit</label>
+                <label><InputRadio value="@((int)@fruit)" />@fruit</label>
             }
         </InputRadioGroup>
-        </span>
-
-    </label>
+    </fieldset>
 </Showcase>
 
 

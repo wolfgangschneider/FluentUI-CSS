@@ -1,6 +1,6 @@
 ﻿@page "/tablist"
 @{
-    string controlName = "Tab (Radio)";
+    string controlName = "TabList";
 }
 <h1>@controlName</h1>
 
@@ -11,50 +11,50 @@
 <h2>TabList</h2>
 
 <Showcase>
-    <span class="vtablist">
+    <div class="tablist">
         <InputRadioGroup @bind-Value="@value1">
             @foreach (var fruit in Enum.GetValues(typeof(Fruits)))
             {
-                <label><InputRadio value="@((int)@fruit)" />@fruit</label>
+                <label><InputRadio Value="@((int)fruit)" />@fruit</label>
             }
         </InputRadioGroup>
-    </span>
+    </div>
 </Showcase>
 
 <h3>Disabled</h3>
 <Showcase>
-    <span class="vtablist">
-        <InputRadioGroup Name="tablist-disabled" disabled @bind-Value="@value1">
+    <div class="tablist">
+        <InputRadioGroup Name="tablist-disabled" @bind-Value="@value1">
             @foreach (var fruit in Enum.GetValues(typeof(Fruits)))
             {
-                <label><InputRadio disabled value="@((int)@fruit)" />@fruit</label>
+                <label><InputRadio disabled Value="@((int)fruit)" />@fruit</label>
             }
         </InputRadioGroup>
-    </span>
+    </div>
 </Showcase>
 
-<h2>HTabList</h2>
+<h2>Vertical</h2>
 <Showcase>
-    <span class="htablist">
-        <InputRadioGroup Name="htablist" @bind-Value="@value2">
+    <div class="tablist tablist--orientation-vertical">
+        <InputRadioGroup @bind-Value="@value2">
             @foreach (var fruit in Enum.GetValues(typeof(Fruits)))
             {
-                <label><InputRadio value="@((int)@fruit)" />@fruit</label>
+                <label><InputRadio Value="@((int)fruit)" />@fruit</label>
             }
         </InputRadioGroup>
-    </span>
+    </div>
 </Showcase>
 
-<h3>HTabList Disabled</h3>
+<h3>Vertical Disabled</h3>
 <Showcase>
-    <span class="htablist">
-        <InputRadioGroup Name="htablist-disabled" disabled @bind-Value="@value2">
+    <div class="tablist tablist--orientation-vertical">
+        <InputRadioGroup Name="tablist-vertical-disabled" @bind-Value="@value2">
             @foreach (var fruit in Enum.GetValues(typeof(Fruits)))
             {
-                <label><InputRadio disabled value="@((int)@fruit)" />@fruit</label>
+                <label><InputRadio disabled Value="@((int)fruit)" />@fruit</label>
             }
         </InputRadioGroup>
-    </span>
+    </div>
 </Showcase>
 @* 
 <h2>STORIES</h2>

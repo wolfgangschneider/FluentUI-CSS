@@ -8,11 +8,8 @@
     <a href="https://web-components.fluentui.dev/?path=/docs/components-checkbox--docs" target="_blank">See on Web Components v3</a>
 </p>
 <Showcase>
-    <label class="switch">
-        <InputCheckbox  @bind-Value="@value" />
-        <span class="track">
-            <span class="thumb"></span>
-        </span>
+    <label>
+        <InputCheckbox role="switch" @bind-Value="@value" />
     </label>
 </Showcase>
 <h2>STORIES</h2>
@@ -20,33 +17,24 @@
 <h3>Default</h3>
 <Showcase>
     
-    <label class="switch">
-        <InputCheckbox  @bind-Value="@value" />
-        <span class="track">
-            <span class="thumb"></span>
-        </span>
+    <label>
+        <InputCheckbox role="switch" @bind-Value="@value" />
         @controlName
     </label>
 </Showcase>
 
 <h3>Without label</h3>
 <Showcase>
-    <label class="switch">
-        <InputCheckbox  @bind-Value="@value" />
-        <span class="track">
-            <span class="thumb"></span>
-        </span>
+    <label>
+        <InputCheckbox role="switch" @bind-Value="@value" />
     </label>
 
 </Showcase>
 
 <h3>Disabled</h3>
 <Showcase>
-    <label class="switch">
-        <InputCheckbox disabled  @bind-Value="@value" />
-        <span class="track">
-            <span class="thumb"></span>
-        </span>
+    <label>
+        <InputCheckbox role="switch" disabled @bind-Value="@value" />
         Disabled  @controlName
     </label>
 
@@ -57,20 +45,14 @@
 
 <h3>Invalid</h3>
 <Showcase>
-    <label class="switch">
-        <InputCheckbox class="invalid" @bind-Value="@value" />
-        <span class="track">
-            <span class="thumb"></span>
-        </span>
+    <label>
+        <InputCheckbox role="switch" class="invalid" @bind-Value="@value" />
         Invalied  @controlName Blazor (class .invalid)
     </label>
 
  
-    <label class="switch">
-        <input type="checkbox" required />
-        <span class="track">
-            <span class="thumb"></span>
-        </span>
+    <label>
+        <input type="checkbox" role="switch" required />
         Invalied  @controlName CSS :invalid
     </label>
 </Showcase>

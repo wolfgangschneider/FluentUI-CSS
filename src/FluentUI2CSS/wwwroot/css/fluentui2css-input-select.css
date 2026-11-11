@@ -1,47 +1,85 @@
-﻿select {
-    align-items: center;
-    background-color: var(--colorNeutralBackground1);
-    border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
-    border-bottom-color: var(--colorNeutralStrokeAccessible);
-    border-radius: var(--borderRadiusMedium);
-    box-sizing: border-box;
-    height: 32px;
-    display: inline-flex;
-    flex-direction: row;
-    gap: var(--spacingHorizontalXXS);
-    padding: 0 var(--spacingHorizontalMNudge);
-    position: relative;
+﻿@layer fluentui2css {
+    select {
+        --chevron-color: var(--colorNeutralForeground3);
+        appearance: none;
+        align-items: center;
+        background-color: var(--colorNeutralBackground1);
+        border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+        border-block-end-color: var(--colorNeutralStrokeAccessible);
+        border-radius: var(--borderRadiusMedium);
+        box-sizing: border-box;
+        height: 32px;
+        display: inline-flex;
+        flex-direction: row;
+        gap: var(--spacingHorizontalXXS);
+        padding: 0 var(--spacingHorizontalMNudge);
+        padding-inline-end: calc(var(--spacingHorizontalMNudge) + 20px + var(--spacingHorizontalXXS));
+        position: relative;
+        /* layers: focus line, line in the bottom border (see input), chevron as two diagonal strokes */
+        background-image:
+            linear-gradient(var(--colorCompoundBrandStroke) 0 0),
+            linear-gradient(var(--colorNeutralStrokeAccessible) 0 0),
+            linear-gradient(to top right, transparent calc(50% - 0.5px), var(--chevron-color) 0 calc(50% + 0.5px), transparent 0),
+            linear-gradient(to top left, transparent calc(50% - 0.5px), var(--chevron-color) 0 calc(50% + 0.5px), transparent 0);
+        background-origin: border-box, border-box, padding-box, padding-box;
+        background-position:
+            50% 100%,
+            50% 100%,
+            right calc(var(--spacingHorizontalMNudge) + 10px) center,
+            right calc(var(--spacingHorizontalMNudge) + 4px) center;
+        background-repeat: no-repeat;
+        background-size: 0% 2px, 100% 1px, 6px 6px, 6px 6px;
+        transition: background-size var(--durationUltraFast) var(--curveAccelerateMid);
 
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
-    cursor: pointer;
+        font-family: var(--fontFamilyBase);
+        font-size: var(--fontSizeBase300);
+        font-weight: var(--fontWeightRegular);
+        line-height: var(--lineHeightBase300);
+        cursor: pointer;
 
-    &:focus-within {
-        outline: 0;
-        border-bottom: 0;
-        border-bottom: 2px solid var(--colorCompoundBrandStroke);
+        &:enabled:hover:not(:focus, .invalid) {
+            border-color: var(--colorNeutralStroke1Hover);
+            border-block-end-color: var(--colorNeutralStrokeAccessibleHover);
+        }
+
+        &:focus-within {
+            outline: 0;
+            border-block-end-color: transparent;
+            background-size: 100% 2px, 100% 1px, 6px 6px, 6px 6px;
+            transition: background-size var(--durationNormal) var(--curveDecelerateMid);
+        }
+
+        &:disabled,
+        &:disabled:hover {
+            --chevron-color: var(--colorNeutralForegroundDisabled);
+            background-color: var(--colorTransparentBackground);
+            border: var(--strokeWidthThin) solid var(--colorNeutralStrokeDisabled);
+            cursor: default;
+        }
+
+        &:read-only {
+            color: var(--colorNeutralForeground1);
+        }
+
+        &.invalid {
+            border-color: var(--colorPaletteRedBorder2);
+            outline: none;
+        }
     }
 
-    &:disabled,
-    &:disabled:hover {
-        background: var(--colorTransparentBackground);
-        border: var(--strokeWidthThin) solid var(--colorNeutralStrokeDisabled);
-        cursor: default;
-        pointer-events: none;
+    option:checked {
+        background-color: var(--colorBrandBackground2);
     }
 
-    &:read-only {
-        color: var(--colorNeutralForeground1);
-    }
+    @media (forced-colors: active) {
+        select {
+            appearance: auto;
+            background-image: none;
+            padding-inline-end: var(--spacingHorizontalMNudge);
 
-    &.invalid {
-        border-color: var(--colorPaletteRedBorder2);
-        outline: none;
+            &:focus-within {
+                border-block-end-color: Highlight;
+            }
+        }
     }
-}
-
-option:checked {
-    background-color: var(--colorBrandBackground2);
 }

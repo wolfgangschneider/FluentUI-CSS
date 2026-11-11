@@ -49,15 +49,13 @@
             <div class="paceholder">
                 fui-personal is no native blazor/html component
             </div>
-            <span class="vtablist">
-                <InputRadioGroup   @bind-Value="@valueTabPage">
-
-                    <label><InputRadio  value="1"/>Home</label>
-                    <label><InputRadio  value="2"/>Pages</label>
-                    <label><InputRadio  value="3"/>Documents</label>
-
+            <div class="tablist">
+                <InputRadioGroup @bind-Value="@valueTabPage">
+                    <label><InputRadio Value="1" />Home</label>
+                    <label><InputRadio Value="2" />Pages</label>
+                    <label><InputRadio Value="3" />Documents</label>
                 </InputRadioGroup>
-            </span>
+            </div>
             <input type="search" placeholder="Find" />
             <select >
                 <option value="" disabled hidden selected>Select</option>
@@ -71,20 +69,12 @@
 
             <button style="width:70px; height:20px" class="button--appearance-primary">Text</button>
             <div >
-                <label class="switch">
-	                <input type="checkbox" checked name="value" class value="True" >
-                    <span class="track">
-		                <span class="thumb">
-		                </span>
-	                </span>
+                <label>
+	                <input type="checkbox" role="switch" checked name="value" class value="True">
                     On
                 </label>
-                <label class="switch">
-	                <input type="checkbox" name="value" class value="True" >
-                    <span class="track">
-		                <span class="thumb">
-		                </span>
-	                </span>
+                <label>
+	                <input type="checkbox" role="switch" name="value" class value="True">
                     Off
                 </label>
             </div>

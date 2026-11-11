@@ -1,82 +1,78 @@
-﻿/* Nav link */
-.nav {
-    padding: 0 4px;
-}
+﻿@layer fluentui2css {
+    /* Nav link */
+    .nav {
+        padding: 0 4px;
+    }
 
-.nav--orientation-vertical {
-    padding: 0 4px;
+    .nav--orientation-vertical {
+        padding: 0 4px;
 
-    .nav-item,
-    .nav__item {
-        display: flex;
-        width: 100%;
-        position: relative;
-        align-items: center;
-        box-sizing: border-box;
-        background-color: var(--colorNeutralBackground2);
-        border: var(--strokeWidthThin) solid transparent;
-        border-radius: var(--borderRadiusMedium);
-        padding: 0 0 0 10px;
-        min-height: var(--lineHeightBase600);
-        margin: 4px 0;
-        white-space: nowrap;
-        color: var(--colorNeutralForeground1);
-        font-family: var(--fontFamilyBase);
-        font-size: var(--fontSizeBase300);
-        font-weight: var(--fontWeightRegular);
-        line-height: var(--lineHeightBase300);
-
-        &:hover {
-            cursor: pointer;
-            background-color: var(--colorNeutralBackground2Hover);
-        }
-
-        .active:before,
-        &.nav__item--is-active::before {
-            content: "";
-            display: block;
-            position: absolute;
-            right: unset;
-            width: 3px;
-            height: 16px;
-            z-index: 5;
-            background: var(--colorBrandBackground);
-            border-radius: var(--borderRadiusMedium);
-            left: 2px;
-        }
-
-        .nav-link,
-        .nav__link {
-            min-height: var(--lineHeightBase600);
-            width: 100%;
-            color: inherit;
-            align-items: center;
-            text-decoration: none;
+        .nav-item,
+        .nav__item {
             display: flex;
+            position: relative;
+            align-items: center;
+            box-sizing: border-box;
+            inline-size: 100%;
+            min-block-size: 40px;
+            margin-block: 0 var(--spacingVerticalXXS);
+            padding-inline: var(--spacingHorizontalMNudge) var(--spacingHorizontalS);
+            border-radius: var(--borderRadiusMedium);
+            background-color: var(--colorNeutralBackground2);
+            white-space: nowrap;
+            color: var(--colorNeutralForeground2);
+            font-family: var(--fontFamilyBase);
+            font-size: var(--fontSizeBase300);
+            font-weight: var(--fontWeightRegular);
+            line-height: var(--lineHeightBase300);
 
-            svg {
-                margin-right: 8px;
-                width: 20px;
-                fill: var(--colorBrandBackground);
+            &:hover {
+                cursor: pointer;
+                background-color: var(--colorNeutralBackground2Hover);
+            }
+
+            /* active: NavLink sets .active on the link */
+            &:has(.active),
+            &.nav__item--is-active {
+                font-weight: var(--fontWeightSemibold);
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    inset-inline-start: calc(-1 * var(--spacingHorizontalXS));
+                    inline-size: 4px;
+                    block-size: 20px;
+                    border-radius: var(--borderRadiusCircular);
+                    background-color: var(--colorCompoundBrandStroke);
+                }
+            }
+
+            .nav-link,
+            .nav__link {
+                display: flex;
+                align-items: center;
+                align-self: stretch;
+                gap: var(--spacingHorizontalL);
+                inline-size: 100%;
+                color: inherit;
+                font-weight: inherit;
+                text-decoration: none;
+
+                &:focus-visible {
+                    outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+                    border-radius: var(--borderRadiusMedium);
+                }
+
+                svg {
+                    flex-shrink: 0;
+                    inline-size: 20px;
+                    fill: var(--colorBrandBackground);
+                }
             }
         }
-    }
 
-    &.collapsed * span {
-        display: none;
-    }
-
-    &.collapsed * svg {
-        margin-right: 4px;
+        &.collapsed * span {
+            display: none;
+        }
     }
 }
-
-
-
-
-
-
-
-
-
-   

@@ -1,48 +1,92 @@
-﻿input[type=color] {
-    cursor: pointer;
-}
-
-input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
-textarea {
-    align-items: center;
-    color: var(--colorNeutralForeground1);
-    background-color: var(--colorNeutralBackground1);
-    border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
-    border-bottom-color: var(--colorNeutralStrokeAccessible);
-    border-radius: var(--borderRadiusMedium);
-    box-sizing: border-box;
-    height: 32px;
-    display: inline-flex;
-    flex-direction: row;
-    gap: var(--spacingHorizontalXXS);
-    padding: 0 var(--spacingHorizontalMNudge);
-    position: relative;
-    font-family: var(--fontFamilyBase);
-    font-size: var(--fontSizeBase300);
-    font-weight: var(--fontWeightRegular);
-    line-height: var(--lineHeightBase300);
-
-    &:focus-within {
-        outline: 0;
-        border-bottom: 0;
-        border-bottom: 2px solid var(--colorCompoundBrandStroke);
+﻿@layer fluentui2css {
+    input[type=color] {
+        cursor: pointer;
     }
 
-    &:disabled,
-    &:disabled:hover {
-        background: var(--colorTransparentBackground);
-        border: var(--strokeWidthThin) solid var(--colorNeutralStrokeDisabled);
-        cursor: default;
-    }
-
-    &:read-only {
+    input:where(:not([type="checkbox"], [type="radio"], [type="range"])),
+    textarea {
+        align-items: center;
         color: var(--colorNeutralForeground1);
+        background-color: var(--colorNeutralBackground1);
+        border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+        border-block-end-color: var(--colorNeutralStrokeAccessible);
+        border-radius: var(--borderRadiusMedium);
+        box-sizing: border-box;
+        height: 32px;
+        display: inline-flex;
+        flex-direction: row;
+        gap: var(--spacingHorizontalXXS);
+        padding: 0 var(--spacingHorizontalMNudge);
+        position: relative;
+        font-family: var(--fontFamilyBase);
+        font-size: var(--fontSizeBase300);
+        font-weight: var(--fontWeightRegular);
+        line-height: var(--lineHeightBase300);
+        /* focus underline: brand line grows from the center over a 1px line in the bottom border */
+        background-image:
+            linear-gradient(var(--colorCompoundBrandStroke) 0 0),
+            linear-gradient(var(--colorNeutralStrokeAccessible) 0 0);
+        background-origin: border-box;
+        background-position: 50% 100%;
+        background-repeat: no-repeat;
+        background-size: 0% 2px, 100% 1px;
+        transition: background-size var(--durationUltraFast) var(--curveAccelerateMid);
+
+        &:enabled:hover:not(:focus, .invalid, :invalid) {
+            border-color: var(--colorNeutralStroke1Hover);
+            border-block-end-color: var(--colorNeutralStrokeAccessibleHover);
+        }
+
+        &:focus-within {
+            outline: 0;
+            border-block-end-color: transparent;
+            background-size: 100% 2px, 100% 1px;
+            transition: background-size var(--durationNormal) var(--curveDecelerateMid);
+        }
+
+        &:disabled,
+        &:disabled:hover {
+            background: var(--colorTransparentBackground);
+            border: var(--strokeWidthThin) solid var(--colorNeutralStrokeDisabled);
+            cursor: default;
+        }
+
+        &:read-only {
+            color: var(--colorNeutralForeground1);
+        }
+
+        /* for blazor .invalid and css :invalid*/
+        &.invalid,
+        &:invalid {
+            border: 1px solid var(--colorPaletteRedBorder2);
+            outline: none;
+        }
     }
 
-    /* for blazor .invalid and css :invalid*/
-    &.invalid,
-    &:invalid {
-        border: 1px solid var(--colorPaletteRedBorder2);
-        outline: none;
+    textarea {
+        height: auto;
+        min-height: 52px;
+        padding-block: var(--spacingVerticalSNudge);
+        padding-inline: calc(var(--spacingHorizontalMNudge) + var(--spacingHorizontalXXS));
+    }
+
+    /* number: hide the native spinner, +/- buttons belong in Blazor if needed */
+    input[type="number"] {
+        appearance: textfield;
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            appearance: none;
+            margin: 0;
+        }
+    }
+
+    @media (forced-colors: active) {
+        input:where(:not([type="checkbox"], [type="radio"], [type="range"])),
+        textarea {
+            &:focus-within {
+                border-block-end-color: Highlight;
+            }
+        }
     }
 }

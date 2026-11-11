@@ -1,66 +1,114 @@
-﻿input[type="radio"] {
-    appearance: none;
-    -webkit-appearance: none;
-    --size: 16px;
-    outline: none;
-    vertical-align: middle;
-    cursor: pointer;
-    background-color: var(--colorNeutralBackground1);
-    border: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
-    border-radius: var(--borderRadiusCircular);
-    box-sizing: border-box;
-    position: relative;
-    width: var(--size);
-    aspect-ratio: 1 / 1;
+﻿@layer fluentui2css {
+    input[type="radio"] {
+        --size: 16px;
+        appearance: none;
+        display: inline-grid;
+        place-content: center;
+        position: relative;
+        box-sizing: border-box;
+        inline-size: var(--size);
+        aspect-ratio: 1;
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: var(--colorNeutralBackground1);
+        border: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
+        border-radius: var(--borderRadiusCircular);
 
-    &:checked {
-        border: 1px solid var(--colorBrandBackground);
-
-        &:after {
-            --size: 10px;
-            display: block;
-            content: '';
-            box-sizing: border-box;
-            border-radius: 100px;
-            background-color: var(--colorBrandBackground);
-            aspect-ratio: 1 / 1;
-            height: var(--size);
-            position: relative;
-            top: 2px;
-            left: 2px;
+        /* checked indicator */
+        &::before {
+            content: "";
+            inline-size: calc(var(--size) * 0.625);
+            aspect-ratio: 1;
+            border-radius: var(--borderRadiusCircular);
+            background-color: var(--colorCompoundBrandBackground);
+            scale: 0;
         }
 
-        &:disabled:after {
-            background-color: var(--colorNeutralForegroundDisabled);
+        &:enabled:hover {
+            border-color: var(--colorNeutralStrokeAccessibleHover);
         }
 
-        &:hover:not(:disabled)::after {
-            accent-color: var(--colorBrandBackgroundHover);
-            background-color: var(--colorBrandBackgroundHover);
-            border-color: var(--colorBrandBackgroundHover);
+        &:enabled:active {
+            border-color: var(--colorNeutralStrokeAccessiblePressed);
         }
 
-        &:hover:active:not(:disabled)::after {
-            accent-color: var(--colorBrandBackgroundPressed);
-            background-color: var(--colorBrandBackgroundPressed);
-            border-color: var(--colorBrandBackgroundPressed);
+        &:checked {
+            border-color: var(--colorCompoundBrandStroke);
+
+            &::before {
+                scale: 1;
+            }
+
+            &:enabled:hover::before {
+                background-color: var(--colorCompoundBrandBackgroundHover);
+            }
+
+            &:enabled:active::before {
+                background-color: var(--colorCompoundBrandBackgroundPressed);
+            }
+        }
+
+        &:focus-visible {
+            outline: none;
+
+            &::after {
+                content: "";
+                position: absolute;
+                inset: -8px;
+                border: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+                border-radius: var(--borderRadiusMedium);
+            }
+        }
+
+        &:disabled {
+            background-color: var(--colorNeutralBackgroundDisabled);
+            border-color: var(--colorNeutralStrokeDisabled);
+            cursor: default;
+
+            &::before {
+                background-color: var(--colorNeutralStrokeDisabled);
+            }
+        }
+
+        /* for blazor .invalid and css :invalid */
+        &.invalid,
+        &[aria-invalid="true"],
+        &:invalid {
+            border-color: var(--colorPaletteRedBorder2);
+
+            &::before {
+                background-color: var(--colorPaletteRedBorder2);
+            }
         }
     }
 
-    &:disabled,
-    &:disabled:hover {
-        background-color: var(--colorNeutralBackgroundDisabled);
-        border-color: var(--colorNeutralStrokeDisabled);
-        pointer-events: none;
-    }
+    @media (forced-colors: active) {
+        input[type="radio"] {
+            border-color: FieldText;
 
-    &.invalid,
-    &[aria-invalid="true"],
-    &:invalid {
-        border: var(--strokeWidthThin) solid var(--colorPaletteRedBorder2);
+            &::before {
+                background-color: FieldText;
+            }
 
-        &:after {
-            background-color: var(--colorPaletteRedBorder2);
+            &:enabled:hover {
+                border-color: Highlight;
+            }
+
+            &:checked:enabled:hover::before {
+                background-color: Highlight;
+            }
+
+            &:focus-visible::after {
+                border-color: Highlight;
+            }
+
+            &:disabled {
+                border-color: GrayText;
+
+                &::before {
+                    background-color: GrayText;
+                }
+            }
         }
     }
 }

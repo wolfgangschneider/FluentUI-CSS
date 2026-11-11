@@ -1,262 +1,118 @@
-
-/* http://danielstern.ca/range.css/#/ */
-input[type=range] {
-    width: 100%;
-    background-color: transparent;
-    -webkit-appearance: none;
-    --trackSizeSmall: 2px;
-    --thumbSizeSmall: 14px;
-    --trackSizeMedium: 4px;
-    --thumbSizeMedium: 18px;
-    --trackSizeLarge: 6px;
-    --thumbSizeLarge: 22px;
-
-    &:focus {
-        outline: none;
-    }
-
-    /* ========== WebKit (Chrome, Safari, Edge) ========== */
-
-    &::-webkit-slider-runnable-track {
-        background: var(--colorBrandBackground);
-        border: 0;
-        outline: none;
-        width: 100%;
-        height: var(--trackSizeMedium);
-        cursor: pointer;
-        border-radius: var(--borderRadiusCircular);
-    }
-
-    &.range--small::-webkit-slider-runnable-track {
-        height: var(--trackSizeSmall);
-    }
-
-    &.range--large::-webkit-slider-runnable-track {
-        height: var(--trackSizeLarge);
-    }
-
-    &::-webkit-slider-thumb {
-        margin-top: calc((var(--trackSizeMedium) - var(--thumbSizeMedium)) / 2);
-        width: var(--thumbSizeMedium);
-        height: var(--thumbSizeMedium);
-        background: var(--colorBrandBackground);
-        border: 4px solid var(--colorNeutralBackground1);
-        border-radius: var(--borderRadiusCircular);
-        cursor: pointer;
-        -webkit-appearance: none;
-        outline: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
-        outline-offset: 0;
-    }
-
-    &.range--small::-webkit-slider-thumb {
-        margin-top: calc((var(--trackSizeSmall) - var(--thumbSizeSmall)) / 2);
-        width: var(--thumbSizeSmall);
-        height: var(--thumbSizeSmall);
-        border: 3px solid var(--colorNeutralBackground1);
-    }
-
-    &.range--large::-webkit-slider-thumb {
-        margin-top: calc((var(--trackSizeLarge) - var(--thumbSizeLarge)) / 2);
-        width: var(--thumbSizeLarge);
-        height: var(--thumbSizeLarge);
-        border: 4px solid var(--colorNeutralBackground1);
-    }
-
-    &:disabled::-webkit-slider-runnable-track,
-    &:disabled::-webkit-slider-thumb {
-        background: var(--colorNeutralForegroundDisabled);
-        outline-color: var(--colorNeutralForegroundDisabled);
-        cursor: default;
-    }
-
-    &:hover:not(:disabled)::-webkit-slider-runnable-track,
-    &:hover:not(:disabled)::-webkit-slider-thumb {
-        background: var(--colorBrandBackgroundHover);
-    }
-
-    &:active:not(:disabled)::-webkit-slider-runnable-track,
-    &:active:not(:disabled)::-webkit-slider-thumb {
-        background: var(--colorBrandBackgroundPressed);
-    }
-
-    /* ========== Firefox ========== */
-
-    &::-moz-range-track {
-        background: var(--colorBrandBackground);
-        border: 0;
-        width: 100%;
-        height: var(--trackSizeMedium);
-        cursor: pointer;
-        border-radius: var(--borderRadiusCircular);
-    }
-
-    &::-moz-range-thumb {
-        width: var(--thumbSizeMedium);
-        height: var(--thumbSizeMedium);
-        background: var(--colorBrandBackground);
-        border: 4px solid var(--colorNeutralBackground1);
-        border-radius: var(--borderRadiusCircular);
-        cursor: pointer;
-        outline: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
-        outline-offset: 0;
-    }
-
-    &:disabled::-moz-range-track,
-    &:disabled::-moz-range-thumb {
-        background: var(--colorNeutralForegroundDisabled);
-        outline-color: var(--colorNeutralForegroundDisabled);
-        cursor: default;
-    }
-
-    &:hover:not(:disabled)::-moz-range-track,
-    &:hover:not(:disabled)::-moz-range-thumb {
-        background: var(--colorBrandBackgroundHover);
-    }
-
-    &:active:not(:disabled)::-moz-range-track,
-    &:active:not(:disabled)::-moz-range-thumb {
-        background: var(--colorBrandBackgroundPressed);
-    }
-
-    /* ========== Vertical ========== */
-
-    &.range--vertical {
-        width: var(--thumbSizeMedium);
-        height: 100%;
-        -webkit-appearance: none;
-        -moz-appearance: none;
+@layer fluentui2css {
+    input[type="range"] {
+        --thumb-size: 20px;
+        --track-size: 4px;
+        --track-radius: var(--borderRadiusMedium);
+        --rail-color: var(--colorCompoundBrandBackground);
+        --track-color: var(--colorNeutralStrokeAccessible);
         appearance: none;
-        writing-mode: vertical-lr;
-        direction: rtl;
-        background-color: transparent;
+        box-sizing: border-box;
+        overflow: hidden;
+        min-inline-size: 120px;
+        min-block-size: 32px;
+        background: transparent;
+        cursor: pointer;
+
+        &:enabled:hover {
+            --rail-color: var(--colorCompoundBrandBackgroundHover);
+        }
+
+        &:enabled:active {
+            --rail-color: var(--colorCompoundBrandBackgroundPressed);
+        }
+
+        &:disabled {
+            --rail-color: var(--colorNeutralForegroundDisabled);
+            --track-color: var(--colorNeutralBackgroundDisabled);
+            cursor: default;
+        }
 
         &:focus {
             outline: none;
         }
 
-        /* WebKit Track */
+        &:focus-visible {
+            outline: 1px solid var(--colorStrokeFocus1);
+            box-shadow: 0 0 0 2pt var(--colorStrokeFocus2);
+        }
+
+        /* WebKit */
         &::-webkit-slider-runnable-track {
-            background: var(--colorBrandBackground);
-            border: 0;
-            outline: none;
-            width: var(--trackSizeMedium);
-            height: 100%;
-            cursor: pointer;
-            border-radius: var(--borderRadiusCircular);
+            block-size: var(--track-size);
+            border-radius: var(--track-radius);
+            background: var(--track-color);
         }
 
-        &.range--vertical--small::-webkit-slider-runnable-track {
-            width: var(--trackSizeSmall);
-        }
-
-        &.range--vertical--large::-webkit-slider-runnable-track {
-            width: var(--trackSizeLarge);
-        }
-
-        /* WebKit Thumb */
         &::-webkit-slider-thumb {
-            margin-left: calc((var(--trackSizeMedium) - var(--thumbSizeMedium)) / 2);
-            margin-top: 0;
-            width: var(--thumbSizeMedium);
-            height: var(--thumbSizeMedium);
-            background: var(--colorBrandBackground);
-            border: 4px solid var(--colorNeutralBackground1);
+            appearance: none;
+            box-sizing: border-box;
+            inline-size: var(--thumb-size);
+            block-size: var(--thumb-size);
+            margin-block-start: calc((var(--track-size) - var(--thumb-size)) / 2);
             border-radius: var(--borderRadiusCircular);
-            cursor: pointer;
-            -webkit-appearance: none;
-            outline: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
-            outline-offset: 0;
+            box-shadow:
+                inset 0 0 0 calc(var(--thumb-size) * 0.05) var(--colorNeutralStroke1),
+                inset 0 0 0 calc(var(--thumb-size) * 0.25) var(--colorNeutralBackground1);
+            background-color: var(--rail-color);
+            /* progress: the left border image reaches to the start, the input clips it */
+            border-image: linear-gradient(90deg, var(--rail-color) 50%, transparent 0) 0 1 / calc(50% - var(--track-size) / 2) 100vw / 0 100vw;
         }
 
-        &.range--vertical--small::-webkit-slider-thumb {
-            margin-left: calc((var(--trackSizeSmall) - var(--thumbSizeSmall)) / 2);
-            width: var(--thumbSizeSmall);
-            height: var(--thumbSizeSmall);
-            border: 3px solid var(--colorNeutralBackground1);
-        }
-
-        &.range--vertical--large::-webkit-slider-thumb {
-            margin-left: calc((var(--trackSizeLarge) - var(--thumbSizeLarge)) / 2);
-            width: var(--thumbSizeLarge);
-            height: var(--thumbSizeLarge);
-            border: 4px solid var(--colorNeutralBackground1);
-        }
-
-        &:disabled::-webkit-slider-runnable-track,
-        &:disabled::-webkit-slider-thumb {
-            background: var(--colorNeutralForegroundDisabled);
-            outline-color: var(--colorNeutralForegroundDisabled);
-            cursor: default;
-        }
-
-        &:hover:not(:disabled)::-webkit-slider-runnable-track,
-        &:hover:not(:disabled)::-webkit-slider-thumb {
-            background: var(--colorBrandBackgroundHover);
-        }
-
-        &:active:not(:disabled)::-webkit-slider-runnable-track,
-        &:active:not(:disabled)::-webkit-slider-thumb {
-            background: var(--colorBrandBackgroundPressed);
-        }
-
-        /* Firefox Track */
+        /* Firefox */
         &::-moz-range-track {
-            background: var(--colorBrandBackground);
-            border: 0;
-            width: var(--trackSizeMedium);
-            height: 100%;
-            cursor: pointer;
-            border-radius: var(--borderRadiusCircular);
+            block-size: var(--track-size);
+            border-radius: var(--track-radius);
+            background: var(--track-color);
         }
 
-        &.range--vertical--small::-moz-range-track {
-            width: var(--trackSizeSmall);
+        &::-moz-range-progress {
+            block-size: var(--track-size);
+            border-radius: var(--track-radius);
+            background: var(--rail-color);
         }
 
-        &.range--vertical--large::-moz-range-track {
-            width: var(--trackSizeLarge);
-        }
-
-        /* Firefox Thumb */
         &::-moz-range-thumb {
-            width: var(--thumbSizeMedium);
-            height: var(--thumbSizeMedium);
-            background: var(--colorBrandBackground);
-            border: 4px solid var(--colorNeutralBackground1);
+            box-sizing: border-box;
+            inline-size: var(--thumb-size);
+            block-size: var(--thumb-size);
+            border: calc(var(--thumb-size) * 0.05) solid var(--colorNeutralStroke1);
             border-radius: var(--borderRadiusCircular);
-            cursor: pointer;
-            outline: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
-            outline-offset: 0px;
+            box-shadow: 0 0 0 calc(var(--thumb-size) * 0.2) var(--colorNeutralBackground1) inset;
+            background-color: var(--rail-color);
         }
 
-        &.range--vertical--small::-moz-range-thumb {
-            width: var(--thumbSizeSmall);
-            height: var(--thumbSizeSmall);
-            border: 3px solid var(--colorNeutralBackground1);
+        &.range--small {
+            --thumb-size: 16px;
+            --track-size: 2px;
+            --track-radius: var(--borderRadiusSmall);
         }
 
-        &.range--vertical--large::-moz-range-thumb {
-            width: var(--thumbSizeLarge);
-            height: var(--thumbSizeLarge);
-            border: 4px solid var(--colorNeutralBackground1);
-        }
+        &.range--vertical {
+            writing-mode: vertical-lr;
+            direction: rtl;
 
-        &:disabled::-moz-range-track,
-        &:disabled::-moz-range-thumb {
-            background: var(--colorNeutralForegroundDisabled);
-            outline-color: var(--colorNeutralForegroundDisabled);
-            cursor: default;
+            &::-webkit-slider-thumb {
+                border-image: linear-gradient(transparent 50%, var(--rail-color) 0) 1 0 / 100vw calc(50% - var(--track-size) / 2) / 100vw 0;
+            }
         }
+    }
 
-        &:hover:not(:disabled)::-moz-range-track,
-        &:hover:not(:disabled)::-moz-range-thumb {
-            background: var(--colorBrandBackgroundHover);
-        }
+    @media (forced-colors: active) {
+        input[type="range"] {
+            &,
+            &:enabled:hover,
+            &:enabled:active {
+                --rail-color: Highlight;
+                --track-color: WindowText;
+            }
 
-        &:active:not(:disabled)::-moz-range-track,
-        &:active:not(:disabled)::-moz-range-thumb {
-            background: var(--colorBrandBackgroundPressed);
+            &::-webkit-slider-thumb {
+                background-color: ButtonText;
+            }
+
+            &::-moz-range-thumb {
+                background-color: ButtonText;
+            }
         }
     }
 }
-

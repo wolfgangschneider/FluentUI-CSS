@@ -1,103 +1,124 @@
-﻿/* iOS-style toggle switch */
-.switch {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    cursor: pointer;
-    gap: var(--spacingHorizontalS);
-
-    /* Hide the native checkbox */
-    input[type="checkbox"] {
-        opacity: 0;
-        width: 0;
-        height: 0;
-        position: absolute;
-
-        /* Checked state: brand track */
-        &:checked + .track {
-            background-color: var(--colorBrandBackground);
-            border-color: var(--colorBrandBackground);
-        }
-
-        /* Checked state: white thumb + slide right */
-        &:checked + .track .thumb {
-            background-color: var(--colorNeutralBackground1);
-            transform: translateX(16px) translateY(-50%);
-        }
-
-        /* Disabled state */
-        &:disabled + .track {
-            background-color: var(--colorNeutralBackgroundDisabled);
-            border-color: var(--colorNeutralStrokeDisabled);
-        }
-
-        &:disabled + .track .thumb {
-            background-color: var(--colorNeutralForegroundDisabled);
-        }
-    }
-
-    /* Track (pill background) — height matches radio --size (16px), width 2× */
-    .track {
-        display: inline-block;
-        position: relative;
-        width: 32px;
-        height: 16px;
-        background-color: var(--colorNeutralBackground1);
+﻿@layer fluentui2css {
+    input[type="checkbox"][role="switch"] {
+        appearance: none;
+        display: inline-flex;
+        align-items: center;
+        box-sizing: border-box;
+        inline-size: 40px;
+        block-size: 20px;
+        padding: 0 var(--spacingHorizontalXXS);
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: var(--colorTransparentBackground);
         border: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
         border-radius: var(--borderRadiusCircular);
-        transition: background-color 0.25s ease, border-color 0.25s ease;
+
+        /* thumb */
+        &::before {
+            content: "";
+            inline-size: 14px;
+            aspect-ratio: 1;
+            margin-inline-start: 0;
+            border-radius: var(--borderRadiusCircular);
+            background-color: var(--colorNeutralForeground3);
+            transition: margin-inline-start var(--durationNormal) var(--curveEasyEase);
+        }
+
+        &:enabled:hover {
+            border-color: var(--colorNeutralStrokeAccessibleHover);
+
+            &::before {
+                background-color: var(--colorNeutralForeground3Hover);
+            }
+        }
+
+        &:enabled:active {
+            border-color: var(--colorNeutralStrokeAccessiblePressed);
+
+            &::before {
+                background-color: var(--colorNeutralForeground3Pressed);
+            }
+        }
+
+        &:checked {
+            background-color: var(--colorCompoundBrandBackground);
+            border-color: var(--colorCompoundBrandBackground);
+
+            &::before {
+                margin-inline-start: calc(100% - 14px);
+                background-color: var(--colorNeutralForegroundInverted);
+            }
+
+            &:enabled:hover {
+                background-color: var(--colorCompoundBrandBackgroundHover);
+                border-color: var(--colorCompoundBrandBackgroundHover);
+
+                &::before {
+                    background-color: var(--colorNeutralForegroundInvertedHover);
+                }
+            }
+
+            &:enabled:active {
+                background-color: var(--colorCompoundBrandBackgroundPressed);
+                border-color: var(--colorCompoundBrandBackgroundPressed);
+
+                &::before {
+                    background-color: var(--colorNeutralForegroundInvertedPressed);
+                }
+            }
+        }
+
+        &:focus-visible {
+            border-color: var(--colorTransparentStroke);
+            outline: var(--strokeWidthThick) solid var(--colorTransparentStroke);
+            outline-offset: 1px;
+            box-shadow: var(--shadow4), 0 0 0 2px var(--colorStrokeFocus2);
+        }
+
+        &:disabled {
+            cursor: default;
+            border-color: var(--colorNeutralStrokeDisabled);
+
+            &:checked {
+                background-color: var(--colorNeutralBackgroundDisabled);
+            }
+
+            &::before {
+                background-color: var(--colorNeutralForegroundDisabled);
+            }
+        }
+
+        /* for blazor .invalid and css :invalid */
+        &.invalid,
+        &:invalid {
+            border-color: var(--colorPaletteRedBorder2);
+        }
     }
 
-    /* Thumb — 12px circle, vertically centered */
-    .thumb {
-        position: absolute;
-        top: 50%;
-        left: 2px;
-        width: 12px;
-        height: 12px;
-        background-color: var(--colorNeutralStrokeAccessible);
-        border-radius: var(--borderRadiusCircular);
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-        transform: translateY(-50%);
-        transition: transform 0.25s ease, background-color 0.25s ease;
-    }
+    @media (forced-colors: active) {
+        input[type="checkbox"][role="switch"] {
+            border-color: InactiveBorder;
 
-    /* Hover */
-    &:not(.invalid):hover input[type="checkbox"]:not(:disabled):not(:checked):not(.invalid):not(:invalid) + .track {
-        border-color: var(--colorNeutralStrokeAccessibleHover);
-    }
+            &::before,
+            &:enabled:hover::before,
+            &:enabled:active::before {
+                background-color: CanvasText;
+            }
 
-    &:not(.invalid):hover input[type="checkbox"]:not(:disabled):checked:not(.invalid):not(:invalid) + .track {
-        background-color: var(--colorBrandBackgroundHover);
-        border-color: var(--colorBrandBackgroundHover);
-    }
+            &:checked,
+            &:checked:enabled:hover,
+            &:checked:enabled:active {
+                background-color: Highlight;
+                border-color: Highlight;
 
-    /* Pressed — unchecked */
-    &:active input[type="checkbox"]:not(:disabled):not(:checked) + .track {
-        border-color: var(--colorNeutralStrokeAccessiblePressed);
-    }
+                &::before {
+                    background-color: HighlightText;
+                }
+            }
 
-    /* Pressed — checked */
-    &:active input[type="checkbox"]:not(:disabled):checked + .track {
-        background-color: var(--colorBrandBackgroundPressed);
-        border-color: var(--colorBrandBackgroundPressed);
-    }
-
-    /* Focus visible — keyboard navigation */
-    input[type="checkbox"]:focus-visible + .track {
-        outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
-        outline-offset: 2px;
-    }
-
-    /* Disabled state */
-    &:has(input[type="checkbox"]:disabled) {
-        pointer-events: none;
-    }
-
-    /* Invalid state — for blazor .invalid and css :invalid */
-    &.invalid .track,
-    input[type="checkbox"].invalid + .track,
-    input[type="checkbox"]:invalid + .track {
-        border-color: var(--colorPaletteRedBorder2);
+            &:disabled::before {
+                background-color: GrayText;
+            }
+        }
     }
 }

@@ -1,111 +1,142 @@
-.vtablist {
-    display: flex;
-    flex-direction: row;
-    gap: var(--spacingHorizontalL);
-
-    input[type=radio] {
-        appearance: none;
-        -webkit-appearance: none;
-        margin: 0;
-        width: 0;
-        height: 0;
-        border: 0;
-        position: absolute;
-
-        &::after {
-            display: none;
-        }
-    }
-
-    label {
-        cursor: pointer;
-        padding: var(--spacingVerticalS) 0;
-        border-bottom: var(--strokeWidthThicker) solid transparent;
-    
-        background-color: transparent;
+@layer fluentui2css {
+    /* tabs from radios: <div class="tablist"><label><input type="radio">Tab</label>...</div> */
+    .tablist {
+        --tabPaddingInline: var(--spacingHorizontalMNudge);
+        --tabPaddingBlock: var(--spacingHorizontalM);
+        --tabIndicatorInsetInline: var(--tabPaddingInline);
+        --tabIndicatorInsetBlock: 0;
+        display: flex;
+        position: relative;
+        box-sizing: border-box;
         color: var(--colorNeutralForeground2);
-        font-size: var(--fontSizeBase300);
-        font-weight: var(--fontWeightRegular);
-        transition: color 0.1s ease, border-color 0.1s ease;
 
-        &:has(input[type=radio]:checked) {
-            color: var(--colorNeutralForeground1);
-            font-weight: var(--fontWeightSemibold);
-            border-bottom-color: var(--colorBrandStroke1);
-        }
-
-        &:hover {
-            color: var(--colorNeutralForeground1);
-            border-bottom-color: var(--colorNeutralStroke1Hover);
-        }
-
-        &:has(input[type=radio]:checked):hover {
-            border-bottom-color: var(--colorBrandStroke1);
-        }
-
-        &:has(input[type=radio]:disabled) {
-            color: var(--colorNeutralForegroundDisabled);
+        & input[type="radio"] {
+            position: absolute;
+            opacity: 0;
             pointer-events: none;
         }
 
-        &:has(input[type=radio]:disabled:checked) {
-            border-bottom-color: var(--colorNeutralStrokeDisabled);
+        & label:has(input[type="radio"]) {
+            display: inline-flex;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            box-sizing: border-box;
+            padding-block: var(--tabPaddingBlock);
+            padding-inline: var(--tabPaddingInline);
+            border-radius: var(--borderRadiusMedium);
+            color: var(--colorNeutralForeground2);
+            font-family: var(--fontFamilyBase);
+            font-size: var(--fontSizeBase300);
+            font-weight: var(--fontWeightRegular);
+            line-height: var(--lineHeightBase300);
+            cursor: pointer;
+
+            /* indicator */
+            &::after {
+                content: "";
+                position: absolute;
+                inset-inline: var(--tabIndicatorInsetInline);
+                inset-block-end: var(--tabIndicatorInsetBlock);
+                block-size: var(--strokeWidthThicker);
+                border-radius: var(--borderRadiusCircular);
+            }
+
+            &:has(:checked) {
+                color: var(--colorNeutralForeground1);
+                font-weight: var(--fontWeightSemibold);
+
+                &::after {
+                    background-color: var(--colorCompoundBrandStroke);
+                }
+            }
+
+            &:has(:enabled:not(:checked)):hover::after {
+                background-color: var(--colorNeutralStroke1Hover);
+            }
+
+            &:has(:focus-visible) {
+                border-radius: var(--borderRadiusSmall);
+                box-shadow: 0 0 0 3px var(--colorStrokeFocus2);
+                outline: 1px solid var(--colorStrokeFocus1);
+            }
+
+            &:has(:disabled) {
+                cursor: not-allowed;
+                color: var(--colorNeutralForegroundDisabled);
+
+                &:has(:checked)::after {
+                    background-color: var(--colorNeutralForegroundDisabled);
+                }
+            }
+        }
+
+        &.tablist--orientation-vertical {
+            --tabPaddingBlock: var(--spacingVerticalS);
+            --tabIndicatorInsetBlock: var(--spacingVerticalS);
+            flex-direction: column;
+
+            & label:has(input[type="radio"]) {
+                justify-content: flex-start;
+
+                &::after {
+                    inset-block: var(--tabIndicatorInsetBlock);
+                    inset-inline: 0 auto;
+                    block-size: auto;
+                    inline-size: var(--strokeWidthThicker);
+                }
+            }
         }
     }
-}
 
-/* Horizontal tablist — tabs stacked in a column, indicator on left */
-.htablist {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacingVerticalXS);
+    /* sliding indicator: one line on the tablist follows the checked tab (no anchor support: static line per tab) */
+    @supports (anchor-scope: --tab) {
+        .tablist {
+            anchor-scope: --tab;
 
-    input[type=radio] {
-        appearance: none;
-        -webkit-appearance: none;
-        margin: 0;
-        width: 0;
-        height: 0;
-        border: 0;
-        position: absolute;
+            & label:has(input[type="radio"]:checked) {
+                anchor-name: --tab;
+            }
 
-        &::after {
-            display: none;
+            & label:has(input[type="radio"]):has(:checked)::after,
+            & label:has(input[type="radio"]):has(:checked):has(:disabled)::after {
+                background-color: transparent;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                position-anchor: --tab;
+                inset-block-end: anchor(end);
+                inset-inline-start: calc(anchor(start) + var(--tabIndicatorInsetInline));
+                inline-size: calc(anchor-size(inline) - 2 * var(--tabIndicatorInsetInline));
+                block-size: var(--strokeWidthThicker);
+                border-radius: var(--borderRadiusCircular);
+                background-color: var(--colorCompoundBrandStroke);
+                transition-property: inset-inline-start, inline-size;
+                transition-duration: var(--durationSlow);
+                transition-timing-function: var(--curveDecelerateMax);
+            }
+
+            &:has(input[type="radio"]:checked:disabled)::after {
+                background-color: var(--colorNeutralForegroundDisabled);
+            }
+
+            &.tablist--orientation-vertical::after {
+                inset-block: calc(anchor(start) + var(--tabIndicatorInsetBlock)) auto;
+                inset-inline-start: anchor(start);
+                inline-size: var(--strokeWidthThicker);
+                block-size: calc(anchor-size(block) - 2 * var(--tabIndicatorInsetBlock));
+                transition-property: inset-block-start, block-size;
+            }
         }
     }
 
-    label {
-        cursor: pointer;
-        padding: 0 var(--spacingHorizontalM);
-        border-left: var(--strokeWidthThicker) solid transparent;
-        background-color: transparent;
-        color: var(--colorNeutralForeground2);
-        font-size: var(--fontSizeBase300);
-        font-weight: var(--fontWeightRegular);
-        transition: color 0.1s ease, border-color 0.1s ease;
-
-        &:has(input[type=radio]:checked) {
-            color: var(--colorNeutralForeground1);
-            font-weight: var(--fontWeightSemibold);
-            border-left-color: var(--colorBrandStroke1);
-        }
-
-        &:hover {
-            color: var(--colorNeutralForeground1);
-            border-left-color: var(--colorNeutralStroke1Hover);
-        }
-
-        &:has(input[type=radio]:checked):hover {
-            border-left-color: var(--colorBrandStroke1);
-        }
-
-        &:has(input[type=radio]:disabled) {
-            color: var(--colorNeutralForegroundDisabled);
-            pointer-events: none;
-        }
-
-        &:has(input[type=radio]:disabled:checked) {
-            border-left-color: var(--colorNeutralStrokeDisabled);
+    @media (forced-colors: active) {
+        .tablist label:has(:checked)::after,
+        .tablist::after {
+            background-color: Highlight;
         }
     }
 }
